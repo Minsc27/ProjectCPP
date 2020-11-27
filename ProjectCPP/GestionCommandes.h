@@ -3,7 +3,7 @@
 
 class quantite;
 
-ref class GestionCommandes 
+class GestionCommandes 
 	: public Strategy
 {
 public:

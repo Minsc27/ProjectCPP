@@ -1,5 +1,5 @@
 #pragma once
-ref class Strategy
+class Strategy
 {
 public:
 	virtual void creer(void) = 0;

@@ -1,6 +1,6 @@
 #pragma once
 #include "Strategy.h"
-ref class GestionStatistiques :
+class GestionStatistiques :
     public Strategy
 {
 public:

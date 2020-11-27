@@ -1,8 +1,9 @@
 #pragma once
+#include <string>
 
 class GestionCommandes;
 
-ref class Type_paiement
+class Type_paiement
 {
 public:
 	void choix_paiement(void);

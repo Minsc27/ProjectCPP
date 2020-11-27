@@ -1,6 +1,7 @@
 #pragma once
 #include "Strategy.h"
-ref class GestionClients :
+#include <string>
+class GestionClients :
     public Strategy
 {
 public:
@@ -12,8 +13,8 @@ public:
 protected:
 private:
     static int IDclient;
-    String nom;
-    String prenom;
+    std::string nom;
+    std::string prenom;
     double date_naissance;
 };
 

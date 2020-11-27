@@ -103,7 +103,7 @@ namespace ProjectCPP {
 			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
-			MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into adresse values(" + 3 + "," + 27120 + ",'" + "rue" + "','" + "ville" + "')", ConnectDB);
+			MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into adresse values(" + 5 + "," + 27120 + ",'" + "rue" + "','" + "ville" + "')", ConnectDB);
 			MySqlDataReader^ DR;
 			ConnectDB->Open();
 			DR = Adapt1->ExecuteReader();

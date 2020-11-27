@@ -3,7 +3,7 @@
 class GestionPersonnel;
 class GestionClients;
 
-ref class adresse
+class adresse
 {
 public:
 	GestionPersonnel** gestionPersonnel;
