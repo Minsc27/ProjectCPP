@@ -3,14 +3,14 @@
 
 class quantite;
 
-class GestionCommandes 
+ref class GestionCommandes 
 	: public Strategy
 {
 public:
-	void creer(void);
-	void modifier(void);
-	void supprimer(void);
-	void afficher(void);
+	void creer(void) override;
+	void modifier(void) override;
+	void supprimer(void) override;
+	void afficher(void) override;
 
 	quantite** Association_5;
 

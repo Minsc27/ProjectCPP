@@ -1,20 +1,19 @@
 #pragma once
-#include <string>
+#include "GestionCommandes.h"
+using namespace System;
 
-class GestionCommandes;
-
-class Type_paiement
+ref class Type_paiement
 {
 public:
 	void choix_paiement(void);
 
-	GestionCommandes** gestionCommandes;
+	GestionCommandes^ gestionCommandes;
 
 protected:
 private:
-	std::string cheque;
-	std::string espece;
-	std::string virement;
+	String^ cheque;
+	String^ espece;
+	String^ virement;
 	int nbpaiement;
 
 };

@@ -1,11 +1,10 @@
 #pragma once
-
-class GestionStock;
+#include "GestionStock.h"
 
 ref class quantite
 {
 public:
-	GestionStock* gestionStockB;
+	GestionStock^ gestionStockB;
 
 protected:
 private:

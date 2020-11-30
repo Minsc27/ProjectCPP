@@ -1,23 +1,23 @@
 #pragma once
 #include "Strategy.h"
 #include <string>
-class GestionStock :
+ref class GestionStock :
     public Strategy
 {
 public:
-    void creer(void);
-    void modifier(void);
-    void supprimer(void);
-    void afficher(void);
+    void creer(void) override;
+    void modifier(void) override;
+    void supprimer(void) override;
+    void afficher(void) override;
     int changement_tarif(void);
 
 protected:
 private:
     int prixHT;
-    std::string reference;
+    String^ reference;
     double TVA;
     int stock;
-    std::string couleur;
-    std::string nature;
+    String^ couleur;
+    String^ nature;
 };
 

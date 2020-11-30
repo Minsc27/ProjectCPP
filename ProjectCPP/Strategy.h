@@ -1,11 +1,14 @@
 #pragma once
-class Strategy
+//#include "MyForm.h"
+using namespace System;
+
+ref class Strategy abstract
 {
 public:
-	virtual void creer(void) = 0;
-	virtual void modifier(void) = 0;
-	virtual void supprimer(void) = 0;
-	virtual void afficher(void) = 0;
+	virtual void creer(void) abstract;
+	virtual void modifier(void) abstract;
+	virtual void supprimer(void) abstract;
+	virtual void afficher(void) abstract;
 
 protected:
 private:

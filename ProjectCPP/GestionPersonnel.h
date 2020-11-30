@@ -1,18 +1,18 @@
 #pragma once
 #include "Strategy.h"
-#include <string>
-class GestionPersonnel :
+
+ref class GestionPersonnel :
     public Strategy
 {
 public:
-    void creer(void);
-    void modifier(void);
-    void supprimer(void);
-    void afficher(void);
+    void creer(void) override;
+    void modifier(void) override;
+    void supprimer(void) override;
+    void afficher(void) override;
 
 protected:
 private:
-    std::string nom;
-    std::string prenom;
+    String^ nom;
+    String^ prenom;
     double date_embauche;
 };

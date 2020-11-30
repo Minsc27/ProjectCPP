@@ -1,5 +1,12 @@
 #pragma once
 #include <exception>
+#include "Strategy.h"
+#include "GestionClients.h"
+#include "GestionCommandes.h"
+#include "GestionPersonnel.h"
+#include "GestionStock.h"
+#include "GestionStatistiques.h"
+
 namespace ProjectCPP {
 
 	using namespace System;
@@ -24,7 +31,6 @@ namespace ProjectCPP {
 			//TODO: Add the constructor code here
 			//
 		}
-
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -40,13 +46,14 @@ namespace ProjectCPP {
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::BindingSource^ bindingSource1;
 	private: System::ComponentModel::IContainer^ components;
+	private: System::Windows::Forms::Button^ button2;
 	protected:
 
 	private:
+		Strategy^ strategy_;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -59,17 +66,18 @@ namespace ProjectCPP {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->bindingSource1 = (gcnew System::Windows::Forms::BindingSource(this->components));
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bindingSource1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(146, 309);
+			this->button1->Location = System::Drawing::Point(12, 319);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(385, 114);
+			this->button1->Size = System::Drawing::Size(178, 114);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"button1";
+			this->button1->Text = L"Client";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -83,11 +91,22 @@ namespace ProjectCPP {
 			this->dataGridView1->Size = System::Drawing::Size(671, 303);
 			this->dataGridView1->TabIndex = 1;
 			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(479, 319);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(178, 114);
+			this->button2->TabIndex = 2;
+			this->button2->Text = L"Commande";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(669, 461);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button1);
 			this->Name = L"MyForm";
@@ -99,11 +118,13 @@ namespace ProjectCPP {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		try {
+		strategy_ = gcnew GestionClients();
+		this->strategy_->creer();
+		/*try {
 			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
-			MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into adresse values(" + 5 + "," + 27120 + ",'" + "rue" + "','" + "ville" + "')", ConnectDB);
+			MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into adresse values(" + 7 + "," + 27120 + ",'" + "rue" + "','" + "ville" + "')", ConnectDB);
 			MySqlDataReader^ DR;
 			ConnectDB->Open();
 			DR = Adapt1->ExecuteReader();
@@ -113,10 +134,12 @@ namespace ProjectCPP {
 			Adapt->Fill(DT);
 			bindingSource1->DataSource = DT;
 			dataGridView1->DataSource = bindingSource1;
-
 		}
-		catch (exception e) {}
-
+		catch (exception e) {}*/
 	}
-	};
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		strategy_ = gcnew GestionCommandes();
+		this->strategy_->creer();
+	}
+};
 }
