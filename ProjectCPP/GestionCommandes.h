@@ -8,6 +8,8 @@ ref class GestionCommandes
 	: public Strategy
 {
 public:
+	GestionCommandes();
+	GestionCommandes(int, String^_, String^, String^, String^, String^);
 	void creer(void) override;
 	void modifier(void) override;
 	void supprimer(void) override;
@@ -17,6 +19,7 @@ public:
 
 protected:
 private:
+	static int IDcommandes = 0;
 	int reference;
 	String^ date_emission;
 	String^ date_livraison;
