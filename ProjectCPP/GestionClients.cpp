@@ -1,6 +1,6 @@
 #include "GestionClients.h"
 #include "Header.h"
-#include <exception>
+
 
 //int GestionClients::IDclient = 0;
 
