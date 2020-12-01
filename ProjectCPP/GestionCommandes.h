@@ -9,7 +9,7 @@ ref class GestionCommandes
 {
 public:
 	GestionCommandes();
-	GestionCommandes(int, String^_, String^, String^, String^, String^);
+	GestionCommandes(int, String^, String^, String^, String^, String^);
 	void creer(void) override;
 	void modifier(void) override;
 	void supprimer(void) override;

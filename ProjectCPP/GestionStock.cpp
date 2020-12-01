@@ -1,7 +1,29 @@
 #include "GestionStock.h"
+#include "Header.h"
+
+GestionStock::GestionStock() : prixHT(), reference(), TVA(), stock(), couleur(), nature()
+{
+	IDstock++;
+}
+
+GestionStock::GestionStock(double _prixHT, String^ _reference, double _TVA, int _stock, String^ _couleur, String^ _nature) : prixHT(_prixHT), reference(_reference), TVA(_TVA), stock(_stock), couleur(_couleur), nature(_nature)
+{
+	IDstock++;
+}
 
 void GestionStock::creer(void)
 {
+	try {
+		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into stock values(" + IDstock + ",'" + prixHT + "','" + reference + "','" + TVA + "','" + stock + "','" + couleur + "','" + nature + "')", ConnectDB);
+		MySqlDataReader^ DR;
+		ConnectDB->Open();
+		DR = Adapt1->ExecuteReader();
+		ConnectDB->Close();
+	}
+	catch (exception e) {}
 }
 
 void GestionStock::modifier(void)
