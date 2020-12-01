@@ -1,7 +1,6 @@
 #pragma once
 #include "Strategy.h"
-
-class adresse;
+#include "adresse.h"
 
 ref class GestionClients :
     public Strategy 
@@ -24,4 +23,3 @@ private:
 
     adresse* adresse;
 };
-

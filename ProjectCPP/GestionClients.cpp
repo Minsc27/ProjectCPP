@@ -16,17 +16,27 @@ GestionClients::GestionClients(String^ _nom, String^ _prenom, String^ _date_nais
 //using namespace ProjectCPP;
 void GestionClients::creer(void)
 {
+	String^ annee = "";
+	String^ mois = "";
+	String^ jour = "";
+	for (int i = 0; i < 4; i++) {
+		annee += date_naissance[i];
+	}
+	for (int i = 5; i < 7; i++) {
+		mois += date_naissance[i];
+		jour += date_naissance[i + 3];
+	}
 	try{
 		String^ Constring = L"Server=127.0.0.1;user=root;password=Password1234;Database=ProjetBDD";
 		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
-		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into client values(" + IDclient + ",'" + nom + "','" + prenom + "','" + "2002" + "-" + "02" + "-" + "04" + "','" + "2002" + "-" + "02" + "-" + "04" + "')", ConnectDB);
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into client values(" + IDclient + ",'" + nom + "','" + prenom + "','" + annee + "-" + mois + "-" + jour + "','" + "2002" + "-" + "02" + "-" + "04" + "')", ConnectDB);
 		MySqlDataReader^ DR;
 		ConnectDB->Open();
 		DR = Adapt1->ExecuteReader();
 		ConnectDB->Close();
 	}
-	catch (exception e) {}	
+	catch (exception e) {}
 }
 
 void GestionClients::modifier(void)

@@ -3,6 +3,7 @@
 class adresse
 {
 public:
+	int Getrue() { return rue; }
 protected:
 private:
 	int rue;

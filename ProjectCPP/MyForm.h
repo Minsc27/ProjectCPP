@@ -64,7 +64,7 @@ namespace ProjectCPP {
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::BindingSource^ bindingSource1;
 	private: System::ComponentModel::IContainer^ components;
-	private: System::Windows::Forms::Button^ button1;
+
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::TextBox^ nomClient;
 	private: System::Windows::Forms::TextBox^ prenomClient;
@@ -106,6 +106,7 @@ namespace ProjectCPP {
 	private: System::Windows::Forms::ToolStripMenuItem^ statistiquesToolStripMenuItem;
 	private: System::Windows::Forms::ToolTip^ toolTip1;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::Button^ button1;
 
 	protected:
 
@@ -125,7 +126,6 @@ namespace ProjectCPP {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->bindingSource1 = (gcnew System::Windows::Forms::BindingSource(this->components));
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->nomClient = (gcnew System::Windows::Forms::TextBox());
 			this->prenomClient = (gcnew System::Windows::Forms::TextBox());
@@ -161,6 +161,7 @@ namespace ProjectCPP {
 			this->statistiquesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bindingSource1))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -177,25 +178,14 @@ namespace ProjectCPP {
 			this->dataGridView1->Size = System::Drawing::Size(819, 444);
 			this->dataGridView1->TabIndex = 1;
 			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(12, 40);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(127, 40);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"Client";
-			this->button1->UseVisualStyleBackColor = true;
-
-			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(12, 114);
+			this->button2->Location = System::Drawing::Point(12, 403);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(127, 40);
 			this->button2->TabIndex = 2;
-			this->button2->Text = L"Commande";
+			this->button2->Text = L"Annuler";
 			this->button2->UseVisualStyleBackColor = true;
-
 			// 
 			// nomClient
 			// 
@@ -320,19 +310,21 @@ namespace ProjectCPP {
 			// modifierToolStripMenuItem
 			// 
 			this->modifierToolStripMenuItem->Name = L"modifierToolStripMenuItem";
-			this->modifierToolStripMenuItem->Size = System::Drawing::Size(165, 26);
+			this->modifierToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->modifierToolStripMenuItem->Text = L"Modifier";
+			this->modifierToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::modifierToolStripMenuItem_Click);
 			// 
 			// supprimerToolStripMenuItem
 			// 
 			this->supprimerToolStripMenuItem->Name = L"supprimerToolStripMenuItem";
-			this->supprimerToolStripMenuItem->Size = System::Drawing::Size(165, 26);
+			this->supprimerToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->supprimerToolStripMenuItem->Text = L"Supprimer";
+			this->supprimerToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::supprimerToolStripMenuItem_Click);
 			// 
 			// rechercherToolStripMenuItem
 			// 
 			this->rechercherToolStripMenuItem->Name = L"rechercherToolStripMenuItem";
-			this->rechercherToolStripMenuItem->Size = System::Drawing::Size(165, 26);
+			this->rechercherToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->rechercherToolStripMenuItem->Text = L"Rechercher";
 			// 
 			// commandeToolStripMenuItem
@@ -462,6 +454,15 @@ namespace ProjectCPP {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Client";
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(12, 342);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(127, 40);
+			this->button1->TabIndex = 0;
+			this->button1->Text = L"Valider";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -488,9 +489,15 @@ namespace ProjectCPP {
 
 #pragma endregion
 private: System::Void creerToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, adresse_facturationClient->Text);
+	strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, date_naissanceClient->Text);
 	this->strategy_->creer();
 	afficherTable();
+}
+private: System::Void modifierToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->groupBox1->Show();
+}
+private: System::Void supprimerToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->groupBox1->Hide();
 }
 };
 }
