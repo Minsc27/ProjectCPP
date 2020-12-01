@@ -1,5 +1,6 @@
 #pragma once
 #include "Strategy.h"
+#include "Type_paiement.h"
 
 class quantite;
 

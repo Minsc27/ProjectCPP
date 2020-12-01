@@ -3,7 +3,6 @@
 
 void GestionPersonnel::creer(void)
 {
-
 }
 
 void GestionPersonnel::modifier(void)
