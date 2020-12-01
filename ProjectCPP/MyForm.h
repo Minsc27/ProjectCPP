@@ -68,7 +68,8 @@ namespace ProjectCPP {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::TextBox^ nomClient;
 	private: System::Windows::Forms::TextBox^ prenomClient;
-	private: System::Windows::Forms::TextBox^ date_naissanceClient;
+	private: System::Windows::Forms::TextBox^ jour_date_naissanceClient;
+
 	private: System::Windows::Forms::TextBox^ adresse_livraisonClient;
 
 
@@ -107,6 +108,10 @@ namespace ProjectCPP {
 	private: System::Windows::Forms::ToolTip^ toolTip1;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::TextBox^ annee_date_naissanceClient;
+
+	private: System::Windows::Forms::TextBox^ mois_date_naissanceClient;
+
 
 	protected:
 
@@ -129,7 +134,7 @@ namespace ProjectCPP {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->nomClient = (gcnew System::Windows::Forms::TextBox());
 			this->prenomClient = (gcnew System::Windows::Forms::TextBox());
-			this->date_naissanceClient = (gcnew System::Windows::Forms::TextBox());
+			this->jour_date_naissanceClient = (gcnew System::Windows::Forms::TextBox());
 			this->adresse_livraisonClient = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -162,6 +167,8 @@ namespace ProjectCPP {
 			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->mois_date_naissanceClient = (gcnew System::Windows::Forms::TextBox());
+			this->annee_date_naissanceClient = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bindingSource1))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -193,34 +200,34 @@ namespace ProjectCPP {
 				static_cast<System::Byte>(0)));
 			this->nomClient->Location = System::Drawing::Point(189, 38);
 			this->nomClient->Name = L"nomClient";
-			this->nomClient->Size = System::Drawing::Size(127, 22);
+			this->nomClient->Size = System::Drawing::Size(156, 22);
 			this->nomClient->TabIndex = 3;
 			// 
 			// prenomClient
 			// 
 			this->prenomClient->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->prenomClient->Location = System::Drawing::Point(189, 96);
+			this->prenomClient->Location = System::Drawing::Point(189, 104);
 			this->prenomClient->Name = L"prenomClient";
-			this->prenomClient->Size = System::Drawing::Size(127, 22);
+			this->prenomClient->Size = System::Drawing::Size(156, 22);
 			this->prenomClient->TabIndex = 3;
 			// 
-			// date_naissanceClient
+			// jour_date_naissanceClient
 			// 
-			this->date_naissanceClient->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular,
+			this->jour_date_naissanceClient->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->date_naissanceClient->Location = System::Drawing::Point(189, 144);
-			this->date_naissanceClient->Name = L"date_naissanceClient";
-			this->date_naissanceClient->Size = System::Drawing::Size(127, 22);
-			this->date_naissanceClient->TabIndex = 3;
+			this->jour_date_naissanceClient->Location = System::Drawing::Point(189, 179);
+			this->jour_date_naissanceClient->Name = L"jour_date_naissanceClient";
+			this->jour_date_naissanceClient->Size = System::Drawing::Size(27, 22);
+			this->jour_date_naissanceClient->TabIndex = 3;
 			// 
 			// adresse_livraisonClient
 			// 
 			this->adresse_livraisonClient->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->adresse_livraisonClient->Location = System::Drawing::Point(189, 211);
+			this->adresse_livraisonClient->Location = System::Drawing::Point(189, 252);
 			this->adresse_livraisonClient->Name = L"adresse_livraisonClient";
-			this->adresse_livraisonClient->Size = System::Drawing::Size(127, 22);
+			this->adresse_livraisonClient->Size = System::Drawing::Size(156, 22);
 			this->adresse_livraisonClient->TabIndex = 3;
 			// 
 			// label1
@@ -235,7 +242,7 @@ namespace ProjectCPP {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(105, 93);
+			this->label2->Location = System::Drawing::Point(105, 101);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(56, 17);
 			this->label2->TabIndex = 4;
@@ -244,7 +251,7 @@ namespace ProjectCPP {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(57, 147);
+			this->label3->Location = System::Drawing::Point(57, 182);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(104, 17);
 			this->label3->TabIndex = 4;
@@ -253,7 +260,7 @@ namespace ProjectCPP {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(46, 216);
+			this->label4->Location = System::Drawing::Point(46, 257);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(115, 17);
 			this->label4->TabIndex = 4;
@@ -263,15 +270,15 @@ namespace ProjectCPP {
 			// 
 			this->adresse_facturationClient->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->adresse_facturationClient->Location = System::Drawing::Point(189, 284);
+			this->adresse_facturationClient->Location = System::Drawing::Point(189, 326);
 			this->adresse_facturationClient->Name = L"adresse_facturationClient";
-			this->adresse_facturationClient->Size = System::Drawing::Size(127, 22);
+			this->adresse_facturationClient->Size = System::Drawing::Size(156, 22);
 			this->adresse_facturationClient->TabIndex = 3;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(31, 284);
+			this->label5->Location = System::Drawing::Point(31, 326);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(130, 17);
 			this->label5->TabIndex = 4;
@@ -286,7 +293,7 @@ namespace ProjectCPP {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1422, 28);
+			this->menuStrip1->Size = System::Drawing::Size(1422, 30);
 			this->menuStrip1->TabIndex = 5;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -297,34 +304,34 @@ namespace ProjectCPP {
 					this->modifierToolStripMenuItem, this->supprimerToolStripMenuItem, this->rechercherToolStripMenuItem
 			});
 			this->clientToolStripMenuItem->Name = L"clientToolStripMenuItem";
-			this->clientToolStripMenuItem->Size = System::Drawing::Size(61, 24);
+			this->clientToolStripMenuItem->Size = System::Drawing::Size(61, 26);
 			this->clientToolStripMenuItem->Text = L"Client";
 			// 
 			// creerToolStripMenuItem
 			// 
 			this->creerToolStripMenuItem->Name = L"creerToolStripMenuItem";
-			this->creerToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->creerToolStripMenuItem->Size = System::Drawing::Size(165, 26);
 			this->creerToolStripMenuItem->Text = L"Nouveau";
 			this->creerToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::creerToolStripMenuItem_Click);
 			// 
 			// modifierToolStripMenuItem
 			// 
 			this->modifierToolStripMenuItem->Name = L"modifierToolStripMenuItem";
-			this->modifierToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->modifierToolStripMenuItem->Size = System::Drawing::Size(165, 26);
 			this->modifierToolStripMenuItem->Text = L"Modifier";
 			this->modifierToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::modifierToolStripMenuItem_Click);
 			// 
 			// supprimerToolStripMenuItem
 			// 
 			this->supprimerToolStripMenuItem->Name = L"supprimerToolStripMenuItem";
-			this->supprimerToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->supprimerToolStripMenuItem->Size = System::Drawing::Size(165, 26);
 			this->supprimerToolStripMenuItem->Text = L"Supprimer";
 			this->supprimerToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::supprimerToolStripMenuItem_Click);
 			// 
 			// rechercherToolStripMenuItem
 			// 
 			this->rechercherToolStripMenuItem->Name = L"rechercherToolStripMenuItem";
-			this->rechercherToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->rechercherToolStripMenuItem->Size = System::Drawing::Size(165, 26);
 			this->rechercherToolStripMenuItem->Text = L"Rechercher";
 			// 
 			// commandeToolStripMenuItem
@@ -334,7 +341,7 @@ namespace ProjectCPP {
 					this->modifierToolStripMenuItem1, this->supprimerToolStripMenuItem1, this->rechercherToolStripMenuItem1
 			});
 			this->commandeToolStripMenuItem->Name = L"commandeToolStripMenuItem";
-			this->commandeToolStripMenuItem->Size = System::Drawing::Size(100, 24);
+			this->commandeToolStripMenuItem->Size = System::Drawing::Size(100, 26);
 			this->commandeToolStripMenuItem->Text = L"Commande";
 			// 
 			// nouveauToolStripMenuItem
@@ -368,7 +375,7 @@ namespace ProjectCPP {
 					this->modifierToolStripMenuItem2, this->supprimerToolStripMenuItem2, this->rechercherToolStripMenuItem2
 			});
 			this->stockToolStripMenuItem->Name = L"stockToolStripMenuItem";
-			this->stockToolStripMenuItem->Size = System::Drawing::Size(59, 24);
+			this->stockToolStripMenuItem->Size = System::Drawing::Size(59, 26);
 			this->stockToolStripMenuItem->Text = L"Stock";
 			// 
 			// nouveauToolStripMenuItem1
@@ -402,7 +409,7 @@ namespace ProjectCPP {
 					this->modifierToolStripMenuItem3, this->supprimerToolStripMenuItem3, this->rechercherToolStripMenuItem3
 			});
 			this->personnelToolStripMenuItem->Name = L"personnelToolStripMenuItem";
-			this->personnelToolStripMenuItem->Size = System::Drawing::Size(86, 24);
+			this->personnelToolStripMenuItem->Size = System::Drawing::Size(86, 26);
 			this->personnelToolStripMenuItem->Text = L"Personnel";
 			// 
 			// nouveauToolStripMenuItem2
@@ -432,7 +439,7 @@ namespace ProjectCPP {
 			// statistiquesToolStripMenuItem
 			// 
 			this->statistiquesToolStripMenuItem->Name = L"statistiquesToolStripMenuItem";
-			this->statistiquesToolStripMenuItem->Size = System::Drawing::Size(99, 24);
+			this->statistiquesToolStripMenuItem->Size = System::Drawing::Size(99, 26);
 			this->statistiquesToolStripMenuItem->Text = L"Statistiques";
 			// 
 			// groupBox1
@@ -446,7 +453,9 @@ namespace ProjectCPP {
 			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->prenomClient);
-			this->groupBox1->Controls->Add(this->date_naissanceClient);
+			this->groupBox1->Controls->Add(this->annee_date_naissanceClient);
+			this->groupBox1->Controls->Add(this->mois_date_naissanceClient);
+			this->groupBox1->Controls->Add(this->jour_date_naissanceClient);
 			this->groupBox1->Location = System::Drawing::Point(168, 40);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(374, 403);
@@ -462,6 +471,24 @@ namespace ProjectCPP {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Valider";
 			this->button1->UseVisualStyleBackColor = true;
+			// 
+			// mois_date_naissanceClient
+			// 
+			this->mois_date_naissanceClient->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->mois_date_naissanceClient->Location = System::Drawing::Point(232, 179);
+			this->mois_date_naissanceClient->Name = L"mois_date_naissanceClient";
+			this->mois_date_naissanceClient->Size = System::Drawing::Size(27, 22);
+			this->mois_date_naissanceClient->TabIndex = 3;
+			// 
+			// annee_date_naissanceClient
+			// 
+			this->annee_date_naissanceClient->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->annee_date_naissanceClient->Location = System::Drawing::Point(276, 179);
+			this->annee_date_naissanceClient->Name = L"annee_date_naissanceClient";
+			this->annee_date_naissanceClient->Size = System::Drawing::Size(69, 22);
+			this->annee_date_naissanceClient->TabIndex = 3;
 			// 
 			// MyForm
 			// 

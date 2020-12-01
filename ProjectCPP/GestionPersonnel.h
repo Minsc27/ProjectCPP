@@ -9,10 +9,15 @@ public:
     void modifier(void) override;
     void supprimer(void) override;
     void afficher(void) override;
+    void ConvertDate(String^);
 
 protected:
 private:
     String^ nom;
     String^ prenom;
     String^ date_embauche;
+
+    String^ annee;
+    String^ mois;
+    String^ jour;
 };

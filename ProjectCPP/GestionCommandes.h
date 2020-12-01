@@ -9,11 +9,12 @@ ref class GestionCommandes
 {
 public:
 	GestionCommandes();
-	GestionCommandes(int, String^_, String^, String^, String^, String^);
+	GestionCommandes(int, String^, String^, String^, String^, String^);
 	void creer(void) override;
 	void modifier(void) override;
 	void supprimer(void) override;
 	void afficher(void) override;
+	//void ConvertDate(String^);
 
 	quantite** Association_5;
 
@@ -26,5 +27,9 @@ private:
 	String^ date_paiement;
 	String^ type_paiement;
 	String^ date_reglement;
+
+	String^ annee;
+	String^ mois;
+	String^ jour;
 };
 

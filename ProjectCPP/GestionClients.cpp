@@ -17,18 +17,8 @@ GestionClients::GestionClients(String^ _nom, String^ _prenom, String^ _date_nais
 //using namespace ProjectCPP;
 void GestionClients::creer(void)
 {
-	String^ annee = "";
-	String^ mois = "";
-	String^ jour = "";
-	for (int i = 0; i < 4; i++) {
-		annee += date_naissance[i];
-	}
-	for (int i = 5; i < 7; i++) {
-		mois += date_naissance[i];
-		jour += date_naissance[i + 3];
-	}
 	try{
-		String^ Constring = L"Server=127.0.0.1;user=root;password=Password1234;Database=ProjetBDD";
+		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
 		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into client values(" + IDclient + ",'" + nom + "','" + prenom + "','" + annee + "-" + mois + "-" + jour + "','" + "2002" + "-" + "02" + "-" + "04" + "')", ConnectDB);
@@ -42,6 +32,7 @@ void GestionClients::creer(void)
 
 void GestionClients::modifier(void)
 {
+
 }
 
 void GestionClients::supprimer(void)
@@ -56,3 +47,14 @@ int GestionClients::GetIDclient(void)
 {
 	return IDclient;
 }
+
+/*void GestionClients::ConvertDate(String^ _date)
+{
+	for (int i = 0; i < 4; i++) {
+		annee += _date[i];
+	}
+	for (int i = 5; i < 7; i++) {
+		mois += _date[i];
+		jour += _date[i + 3];
+	}
+}*/
