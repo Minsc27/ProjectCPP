@@ -14,5 +14,5 @@ protected:
 private:
     String^ nom;
     String^ prenom;
-    double date_embauche;
+    String^ date_embauche;
 };

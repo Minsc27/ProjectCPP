@@ -17,10 +17,10 @@ public:
 protected:
 private:
 	int reference;
-	double date_emission;
-	double date_livraison;
-	double date_paiement;
-	double type_paiement;
-	double date_reglement;
+	String^ date_emission;
+	String^ date_livraison;
+	String^ date_paiement;
+	String^ type_paiement;
+	String^ date_reglement;
 };
 
