@@ -18,7 +18,7 @@ GestionClients::GestionClients(String^ _nom, String^ _prenom, String^ _date_nais
 void GestionClients::creer(void)
 {
 	try{
-		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+		String^ Constring = L"Server=127.0.0.1;user=root;password=Password1234;Database=ProjetBDD";
 		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
 		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into client values(" + IDclient + ",'" + nom + "','" + prenom + "','" + "2002" + "-" + "02" + "-" + "04" + "','" + "2002" + "-" + "02" + "-" + "04" + "')", ConnectDB);

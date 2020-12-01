@@ -33,7 +33,7 @@ namespace ProjectCPP {
 		}
 		void afficherTable(void) {
 			try {
-				String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+				String^ Constring = L"Server=127.0.0.1;user=root;password=Password1234;Database=ProjetBDD";
 				MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
 				/*MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into adresse values(" + 7 + "," + 27120 + ",'" + "rue" + "','" + "ville" + "')", ConnectDB);
