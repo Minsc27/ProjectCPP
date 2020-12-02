@@ -14,6 +14,10 @@ GestionClients::GestionClients(String^ _nom, String^ _prenom,String^ _annee,Stri
 	IDclient++;
 }
 
+GestionClients::GestionClients(String^ _nom, String^ _prenom, String^ _annee, String^ _mois, String^ _jour, int _IDclient) : nom(_nom), prenom(_prenom), annee(_annee), mois(_mois), jour(_jour), IDclient1(_IDclient)
+{
+}
+
 //using namespace ProjectCPP;
 void GestionClients::creer(void)
 {
@@ -24,7 +28,7 @@ void GestionClients::creer(void)
 		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into client values(" + IDclient + ",'" + nom + "','" + prenom + "','" + annee + "-" + mois + "-" + jour + "','" + "2002" + "-" + "02" + "-" + "04" + "')", ConnectDB);
 		MySqlDataReader^ DR;
 		ConnectDB->Open();
-		DR = Adapt1->ExecuteReader();
+		DR = Adapt1->ExecuteReader(); 
 		ConnectDB->Close();
 	}
 	catch (exception e) {}
@@ -32,6 +36,17 @@ void GestionClients::creer(void)
 
 void GestionClients::modifier(void)
 {
+	try {
+		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("update client set NOM_C = '" + nom + "',PRENOM_C = '" + prenom + "',ANNIVERSAIRE = '" + annee + "-" + mois + "-" + jour + "',PREMIERE_COMMANDE = '" + "2002" + "-" + "02" + "-" + "04" + "' WHERE IDCLIENT = "+ IDclient1, ConnectDB);
+		MySqlDataReader^ DR;
+		ConnectDB->Open();
+		DR = Adapt1->ExecuteReader();
+		ConnectDB->Close();
+	}
+	catch (exception e) {}
 
 }
 

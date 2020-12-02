@@ -14,10 +14,10 @@ GestionCommandes::GestionCommandes(int _reference, String^ _date_emission, Strin
 void GestionCommandes::creer(void)
 {
 	try{
-		String^ Constring = L"Server=127.0.0.1;user=root;password=Password1234;Database=ProjetBDD";
+		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
-		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into commandes values(" + IDcommandes + ",'" + annee + "-" + mois + "-" + jour + "','" + "2002" + "-" + "02" + "-" + "04" + "','" + "2002" + "-" + "02" + "-" + "04" + "')", ConnectDB);
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into commandes values(" + IDcommandes + ",'" + annee + "-" + mois + "-" + jour + "','" + annee + "-" + mois + "-" + jour + "', '"+ 12 +"', '"+ 20 +"' , '" + 14 +"', '" + "reference" +"')", ConnectDB);
 		MySqlDataReader^ DR;
 		ConnectDB->Open();
 		DR = Adapt1->ExecuteReader();
@@ -28,6 +28,17 @@ void GestionCommandes::creer(void)
 
 void GestionCommandes::modifier(void)
 {
+	try {
+		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("update commandes set DATE_LIVRAISON = '" + annee + "-" + mois + "-" + jour + "', DATE_EMISSION = '" + "2002" + "-" + "02" + "-" + "04" + "', PRIXHT_C = '" + 12 + "', TVA_C = '" + 20 + "' , PRIXTTC = '" + 18 + "', REFERENCE_C = '" + "referenceupdate" + "')", ConnectDB);
+		MySqlDataReader^ DR;
+		ConnectDB->Open();
+		DR = Adapt1->ExecuteReader();
+		ConnectDB->Close();
+	}
+	catch (exception e) {}
 }
 
 void GestionCommandes::supprimer(void)

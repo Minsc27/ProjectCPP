@@ -6,6 +6,7 @@ ref class Type_paiement
 {
 public:
 	void choix_paiement(void);
+	int Getnbpaiement(void);
 
 protected:
 private:

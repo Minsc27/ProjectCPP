@@ -8,6 +8,7 @@ ref class GestionClients :
 public:
     GestionClients();
     GestionClients(String^, String^,String^,String^,String^);
+    GestionClients(String^, String^, String^, String^, String^, int);
     void creer(void) override;
     void modifier(void) override;
     void supprimer(void) override;
@@ -18,6 +19,7 @@ public:
 protected:
 private:
     static int IDclient = 0;
+    int IDclient1;
     String^ nom;
     String^ prenom;
 

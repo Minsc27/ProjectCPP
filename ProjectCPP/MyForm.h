@@ -31,24 +31,6 @@ namespace ProjectCPP {
 			//TODO: Add the constructor code here
 			//
 		}
-		void afficherTable(void) {
-			try {
-				String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
-				MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-
-				/*MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into adresse values(" + 7 + "," + 27120 + ",'" + "rue" + "','" + "ville" + "')", ConnectDB);
-				MySqlDataReader^ DR;
-				ConnectDB->Open();
-				DR = Adapt1->ExecuteReader();
-				ConnectDB->Close();*/
-				MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
-				DataTable^ DT = gcnew DataTable();
-				Adapt->Fill(DT);
-				bindingSource1->DataSource = DT;
-				dataGridView1->DataSource = bindingSource1;
-			}
-			catch (exception e) {}
-		}
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -254,6 +236,11 @@ private: System::Windows::Forms::TextBox^ referenceStock;
 
 	private:
 		Strategy^ strategy_;
+private: System::Windows::Forms::TextBox^ textBoxID;
+private: System::Windows::Forms::Label^ labelID;
+
+	   String^ typeStrategy;
+	   String^ typeGestion;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -386,6 +373,8 @@ private: System::Windows::Forms::TextBox^ referenceStock;
 			this->TVAStock = (gcnew System::Windows::Forms::TextBox());
 			this->prixHTStock = (gcnew System::Windows::Forms::TextBox());
 			this->referenceStock = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxID = (gcnew System::Windows::Forms::TextBox());
+			this->labelID = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bindingSource1))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -397,9 +386,15 @@ private: System::Windows::Forms::TextBox^ referenceStock;
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->AllowUserToResizeColumns = false;
+			this->dataGridView1->AllowUserToResizeRows = false;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Location = System::Drawing::Point(580, 12);
 			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->Size = System::Drawing::Size(819, 444);
@@ -626,28 +621,28 @@ private: System::Windows::Forms::TextBox^ referenceStock;
 			// nouveaupersonnelToolStripMenuItem2
 			// 
 			this->nouveaupersonnelToolStripMenuItem2->Name = L"nouveaupersonnelToolStripMenuItem2";
-			this->nouveaupersonnelToolStripMenuItem2->Size = System::Drawing::Size(224, 26);
+			this->nouveaupersonnelToolStripMenuItem2->Size = System::Drawing::Size(165, 26);
 			this->nouveaupersonnelToolStripMenuItem2->Text = L"Nouveau";
 			this->nouveaupersonnelToolStripMenuItem2->Click += gcnew System::EventHandler(this, &MyForm::nouveaupersonnelToolStripMenuItem2_Click);
 			// 
 			// modifierpersonnelToolStripMenuItem3
 			// 
 			this->modifierpersonnelToolStripMenuItem3->Name = L"modifierpersonnelToolStripMenuItem3";
-			this->modifierpersonnelToolStripMenuItem3->Size = System::Drawing::Size(224, 26);
+			this->modifierpersonnelToolStripMenuItem3->Size = System::Drawing::Size(165, 26);
 			this->modifierpersonnelToolStripMenuItem3->Text = L"Modifier";
 			this->modifierpersonnelToolStripMenuItem3->Click += gcnew System::EventHandler(this, &MyForm::modifierpersonnelToolStripMenuItem3_Click);
 			// 
 			// supprimerpersonnelToolStripMenuItem3
 			// 
 			this->supprimerpersonnelToolStripMenuItem3->Name = L"supprimerpersonnelToolStripMenuItem3";
-			this->supprimerpersonnelToolStripMenuItem3->Size = System::Drawing::Size(224, 26);
+			this->supprimerpersonnelToolStripMenuItem3->Size = System::Drawing::Size(165, 26);
 			this->supprimerpersonnelToolStripMenuItem3->Text = L"Supprimer";
 			this->supprimerpersonnelToolStripMenuItem3->Click += gcnew System::EventHandler(this, &MyForm::supprimerpersonnelToolStripMenuItem3_Click);
 			// 
 			// rechercherpersonnelToolStripMenuItem3
 			// 
 			this->rechercherpersonnelToolStripMenuItem3->Name = L"rechercherpersonnelToolStripMenuItem3";
-			this->rechercherpersonnelToolStripMenuItem3->Size = System::Drawing::Size(224, 26);
+			this->rechercherpersonnelToolStripMenuItem3->Size = System::Drawing::Size(165, 26);
 			this->rechercherpersonnelToolStripMenuItem3->Text = L"Rechercher";
 			this->rechercherpersonnelToolStripMenuItem3->Click += gcnew System::EventHandler(this, &MyForm::rechercherpersonnelToolStripMenuItem3_Click);
 			// 
@@ -1520,11 +1515,29 @@ private: System::Windows::Forms::TextBox^ referenceStock;
 			this->referenceStock->Size = System::Drawing::Size(202, 22);
 			this->referenceStock->TabIndex = 3;
 			// 
+			// textBoxID
+			// 
+			this->textBoxID->Location = System::Drawing::Point(67, 62);
+			this->textBoxID->Name = L"textBoxID";
+			this->textBoxID->Size = System::Drawing::Size(59, 22);
+			this->textBoxID->TabIndex = 8;
+			// 
+			// labelID
+			// 
+			this->labelID->AutoSize = true;
+			this->labelID->Location = System::Drawing::Point(28, 65);
+			this->labelID->Name = L"labelID";
+			this->labelID->Size = System::Drawing::Size(21, 17);
+			this->labelID->TabIndex = 9;
+			this->labelID->Text = L"ID";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1422, 491);
+			this->Controls->Add(this->labelID);
+			this->Controls->Add(this->textBoxID);
 			this->Controls->Add(this->groupBoxClient);
 			this->Controls->Add(this->groupBoxPersonnel);
 			this->Controls->Add(this->groupBoxStock);
@@ -1551,6 +1564,8 @@ private: System::Windows::Forms::TextBox^ referenceStock;
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			this->textBoxID->Hide();
+			this->labelID->Hide();
 			this->groupBoxClient->Hide();
 			this->groupBoxCommande->Hide();
 			this->groupBoxPersonnel->Hide();
@@ -1563,101 +1578,266 @@ private: System::Void creerToolStripMenuItem_Click(System::Object^ sender, Syste
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Hide();
+	this->labelID->Hide();
+	//strategy_ = gcnew GestionClients();
+	typeStrategy = "creer";
+	typeGestion = "client";
 }
 private: System::Void modifierToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Show();
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Show();
+	this->labelID->Show();
+	typeStrategy = "modifier";
+	typeGestion = "client";
 }
 private: System::Void supprimerToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Show();
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Show();
+	this->labelID->Show();
+	typeGestion = "client";
+	typeStrategy = "supprimer";
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text);
-	this->strategy_->creer();
-	afficherTable();
+	if (typeGestion == "client") {
+		if (typeStrategy == "creer") {
+			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text);
+			this->strategy_->creer();
+		}
+		if (typeStrategy == "modifier") {
+			int ID = Convert::ToInt32(textBoxID->Text);
+			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text, ID);
+			this->strategy_->modifier();
+		}
+		if (typeStrategy == "supprimer") {
+		}
+		if (typeStrategy == "rechercher") {
+		}
+		try {
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
+			DataTable^ DT = gcnew DataTable();
+			Adapt->Fill(DT);
+			bindingSource1->DataSource = DT;
+			dataGridView1->DataSource = bindingSource1;
+		}
+		catch (exception e) {}
+	}
+	if (typeGestion == "client") {
+		if (typeStrategy == "creer") {
+		}
+		if (typeStrategy == "modifier") {
+		}
+		if (typeStrategy == "supprimer") {
+		}
+		if (typeStrategy == "rechercher") {
+		}
+		try {
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
+			DataTable^ DT = gcnew DataTable();
+			Adapt->Fill(DT);
+			bindingSource1->DataSource = DT;
+			dataGridView1->DataSource = bindingSource1;
+		}
+		catch (exception e) {}
+	}
+	if (typeGestion == "commande") {
+		if (typeStrategy == "creer") {
+		}
+		if (typeStrategy == "modifier") {
+		}
+		if (typeStrategy == "supprimer") {
+		}
+		if (typeStrategy == "rechercher") {
+		}
+		try {
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
+			DataTable^ DT = gcnew DataTable();
+			Adapt->Fill(DT);
+			bindingSource1->DataSource = DT;
+			dataGridView1->DataSource = bindingSource1;
+		}
+		catch (exception e) {}
+	}
+	if (typeGestion == "personnel") {
+		if (typeStrategy == "creer") {
+		}
+		if (typeStrategy == "modifier") {
+		}
+		if (typeStrategy == "supprimer") {
+		}
+		if (typeStrategy == "rechercher") {
+		}
+		try {
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
+			DataTable^ DT = gcnew DataTable();
+			Adapt->Fill(DT);
+			bindingSource1->DataSource = DT;
+			dataGridView1->DataSource = bindingSource1;
+		}
+		catch (exception e) {}
+	}
+	if (typeGestion == "stock") {
+		if (typeStrategy == "creer") {
+		}
+		if (typeStrategy == "modifier") {
+		}
+		if (typeStrategy == "supprimer") {
+		}
+		if (typeStrategy == "rechercher") {
+		}
+		try {
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
+			DataTable^ DT = gcnew DataTable();
+			Adapt->Fill(DT);
+			bindingSource1->DataSource = DT;
+			dataGridView1->DataSource = bindingSource1;
+		}
+		catch (exception e) {}
+	}
 }
 private: System::Void rechercherclientToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Show();
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Show();
+	this->labelID->Show();
+	typeGestion = "client";
+	typeStrategy = "rechercher";
 }
 private: System::Void nouveaucommandeToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Show();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Hide();
+	this->labelID->Hide();
+	typeGestion = "commande";
+	typeStrategy = "creer";
 }
 private: System::Void modifiercommandeToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Show();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Show();
+	this->labelID->Show();
+	typeGestion = "commande";
+	typeStrategy = "modifier";
 }
 private: System::Void supprimercommandeToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Show();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Show();
+	this->labelID->Show();
+	typeGestion = "commande";
+	typeStrategy = "supprimer";
 }
 private: System::Void recherchercommandeToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Show();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Show();
+	this->labelID->Show();
+	typeGestion = "commande";
+	typeStrategy = "rechercher";
 }
 private: System::Void nouveaustockToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Show();
+	this->textBoxID->Hide();
+	this->labelID->Hide();
+	typeGestion = "stock";
+	typeStrategy = "creer";
 }
 private: System::Void modifierstockToolStripMenuItem2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Show();
+	this->textBoxID->Show();
+	this->labelID->Show();
+	typeGestion = "stock";
+	typeStrategy = "modifier";
 }
 private: System::Void supprimerstockToolStripMenuItem2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Show();
+	typeGestion = "stock";
+	typeStrategy = "supprimer";
 }
 private: System::Void rechercherstockToolStripMenuItem2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Hide();
 	this->groupBoxStock->Show();
+	this->textBoxID->Show();
+	this->labelID->Show();
+	typeGestion = "stock";
+	typeStrategy = "rechercher";
 }
 private: System::Void nouveaupersonnelToolStripMenuItem2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Show();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Hide();
+	this->labelID->Hide();
+	typeGestion = "personnel";
+	typeStrategy = "creer";
 }
 private: System::Void modifierpersonnelToolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Show();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Show();
+	this->labelID->Show();
+	typeGestion = "personnel";
+	typeStrategy = "modifier";
 }
 private: System::Void supprimerpersonnelToolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Show();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Show();
+	this->labelID->Show();
+	typeGestion = "personnel";
+	typeStrategy = "supprimer";
 }
 private: System::Void rechercherpersonnelToolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->groupBoxClient->Hide();
 	this->groupBoxCommande->Hide();
 	this->groupBoxPersonnel->Show();
 	this->groupBoxStock->Hide();
+	this->textBoxID->Show();
+	this->labelID->Show();
+	typeGestion = "personnel";
+	typeStrategy = "rechercher";
 }
 };
 }

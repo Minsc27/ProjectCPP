@@ -3,6 +3,8 @@
 #include "Type_paiement.h"
 #include "quantite.h"
 
+ref class type_paiement;
+
 ref class GestionCommandes 
 	: public Strategy
 {
@@ -19,6 +21,8 @@ public:
 
 protected:
 private:
+	Type_paiement^ type_paiement1;
+
 	static int IDcommandes = 0;
 	int reference;
 	String^ date_emission;
