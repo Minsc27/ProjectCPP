@@ -1620,7 +1620,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		if (typeStrategy == "rechercher") {
 		}
 		try {
-			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password1234;Database=ProjetBDD";
 			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
 			DataTable^ DT = gcnew DataTable();
@@ -1630,26 +1630,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		}
 		catch (exception e) {}
 	}
-	if (typeGestion == "client") {
-		if (typeStrategy == "creer") {
-		}
-		if (typeStrategy == "modifier") {
-		}
-		if (typeStrategy == "supprimer") {
-		}
-		if (typeStrategy == "rechercher") {
-		}
-		try {
-			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
-			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
-			DataTable^ DT = gcnew DataTable();
-			Adapt->Fill(DT);
-			bindingSource1->DataSource = DT;
-			dataGridView1->DataSource = bindingSource1;
-		}
-		catch (exception e) {}
-	}
+
+
 	if (typeGestion == "commande") {
 		if (typeStrategy == "creer") {
 		}
@@ -1660,7 +1642,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		if (typeStrategy == "rechercher") {
 		}
 		try {
-			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password1234;Database=ProjetBDD";
 			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
 			DataTable^ DT = gcnew DataTable();
@@ -1672,17 +1654,21 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	if (typeGestion == "personnel") {
 		if (typeStrategy == "creer") {
+			strategy_ = gcnew GestionPersonnel(nomPersonnel->Text, prenomPersonnel->Text, annee_date_embauchePersonnel->Text, mois_date_embauchePersonnel->Text, jour_date_embauchePersonnel->Text);
+			this->strategy_->creer();
 		}
 		if (typeStrategy == "modifier") {
+			strategy_ = gcnew GestionPersonnel(nomPersonnel->Text, prenomPersonnel->Text, annee_date_embauchePersonnel->Text, mois_date_embauchePersonnel->Text, jour_date_embauchePersonnel->Text);
+			this->strategy_->modifier();
 		}
 		if (typeStrategy == "supprimer") {
 		}
 		if (typeStrategy == "rechercher") {
 		}
 		try {
-			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password1234;Database=ProjetBDD";
 			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from personnel", ConnectDB);
 			DataTable^ DT = gcnew DataTable();
 			Adapt->Fill(DT);
 			bindingSource1->DataSource = DT;
@@ -1692,15 +1678,23 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	if (typeGestion == "stock") {
 		if (typeStrategy == "creer") {
+			int prixHT = Convert::ToInt32(prixHTStock->Text);
+			double TVA = Convert::ToInt32(TVAStock->Text);
+			strategy_ = gcnew GestionStock(prixHT, referenceStock->Text, TVA,couleur->Text, comboBox1->Text);
+			this->strategy_->creer();
 		}
 		if (typeStrategy == "modifier") {
+			int prixHT = Convert::ToInt32(prixHTStock->Text);
+			double TVA = Convert::ToInt32(TVAStock->Text);
+			strategy_ = gcnew GestionStock(prixHT, referenceStock->Text, TVA, couleur->Text, comboBox1->Text);
+			this->strategy_->modifier();
 		}
 		if (typeStrategy == "supprimer") {
 		}
 		if (typeStrategy == "rechercher") {
 		}
 		try {
-			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password1234;Database=ProjetBDD";
 			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
 			DataTable^ DT = gcnew DataTable();

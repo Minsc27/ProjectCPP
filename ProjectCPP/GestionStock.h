@@ -7,7 +7,8 @@ ref class GestionStock :
 {
 public:
     GestionStock();
-    GestionStock(double, String^, double, int, String^, String^);
+    GestionStock(double, String^, double, String^, String^);
+    GestionStock(double, String^, double, String^, String^, int);
     void creer(void) override;
     void modifier(void) override;
     void supprimer(void) override;
@@ -18,6 +19,7 @@ public:
 protected:
 private:
     static int IDstock = 0;
+    int IDstock1;
     double prixHT;
     String^ reference;
     double TVA;
