@@ -1,9 +1,11 @@
 #pragma once
 #include <iostream>
+
 class adresse
 {
 public:
-	adresse(std::string,int, std::string);
+	adresse();
+	adresse(std::string,int, std::string, std::string, int, std::string);
 	std::string Getruelivraison() { return rue_livraison; }
 	std::string Getrvillelivraison() { return ville_livraison; }
 	int Getcode_postallivraison() { return code_postal_livraison; }

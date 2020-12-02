@@ -4,12 +4,12 @@
 
 //int GestionClients::IDclient = 0;
 
-GestionClients::GestionClients() : nom(), prenom(), date_naissance()
+GestionClients::GestionClients() : nom(), prenom(), annee(),mois(),jour()
 {
 	IDclient++;
 }
 
-GestionClients::GestionClients(String^ _nom, String^ _prenom, String^ _date_naissance) : nom(_nom),prenom(_prenom), date_naissance(_date_naissance)
+GestionClients::GestionClients(String^ _nom, String^ _prenom,String^ _annee,String^ _mois, String^ _jour) : nom(_nom),prenom(_prenom), annee(_annee), mois(_mois), jour(_jour)
 {
 	IDclient++;
 }

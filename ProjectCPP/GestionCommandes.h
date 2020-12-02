@@ -1,8 +1,7 @@
 #pragma once
 #include "Strategy.h"
 #include "Type_paiement.h"
-
-class quantite;
+#include "quantite.h"
 
 ref class GestionCommandes 
 	: public Strategy

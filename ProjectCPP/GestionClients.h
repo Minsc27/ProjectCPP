@@ -1,15 +1,13 @@
 #pragma once
 #include "Strategy.h"
 #include "adresse.h"
-#include <msclr\marshal_cppstd.h>
-using namespace msclr::interop;
 
 ref class GestionClients :
     public Strategy 
 {
 public:
     GestionClients();
-    GestionClients(String^, String^,String^);
+    GestionClients(String^, String^,String^,String^,String^);
     void creer(void) override;
     void modifier(void) override;
     void supprimer(void) override;
