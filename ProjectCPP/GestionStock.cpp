@@ -6,9 +6,13 @@ GestionStock::GestionStock() : prixHT(), reference(), TVA(), stock(), couleur(),
 	IDstock++;
 }
 
-GestionStock::GestionStock(double _prixHT, String^ _reference, double _TVA, int _stock, String^ _couleur, String^ _nature) : prixHT(_prixHT), reference(_reference), TVA(_TVA), stock(_stock), couleur(_couleur), nature(_nature)
+GestionStock::GestionStock(double _prixHT, String^ _reference, double _TVA, String^ _couleur, String^ _nature) : prixHT(_prixHT), reference(_reference), TVA(_TVA), couleur(_couleur), nature(_nature)
 {
 	IDstock++;
+}
+
+GestionStock::GestionStock(double _prixHT, String^ _reference, double _TVA, String^ _couleur, String^ _nature, int _IDstock) : prixHT(_prixHT), reference(_reference), TVA(_TVA), couleur(_couleur), nature(_nature), IDstock1(_IDstock)
+{
 }
 
 void GestionStock::creer(void)
@@ -17,7 +21,7 @@ void GestionStock::creer(void)
 		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
-		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into stock values(" + IDstock + ",'" + prixHT + "','" + reference + "','" + TVA + "','" + stock + "','" + couleur + "','" + nature + "')", ConnectDB);
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into article values(" + IDstock + ",'" + prixHT + "','" + reference + "','" + TVA + "','" + couleur + "','" + nature + "')", ConnectDB);
 		MySqlDataReader^ DR;
 		ConnectDB->Open();
 		DR = Adapt1->ExecuteReader();
@@ -33,7 +37,7 @@ void GestionStock::modifier(void)
 		String^ Constring = "Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
-		MySqlCommand^ Adapt1 = gcnew MySqlCommand("update stock prixHT='" + prixHT + "',stock='" + stock + "',couleur='" + couleur + "',nature='" + nature + "' WHERE id=" + IDstock1, ConnectDB);
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("update article set PRIXHT_S='" + 12 + "',REFERENCE_S='" + reference + "',TVA_S='" + 20 + "',COULEUR_S='" + couleur + "',NATURE_S='" + nature + "' WHERE IDstock=" + IDstock1, ConnectDB);
 		MySqlDataReader^ DR;
 		ConnectDB->Open();
 		DR = Adapt1->ExecuteReader();
