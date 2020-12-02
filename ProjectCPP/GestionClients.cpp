@@ -41,6 +41,29 @@ void GestionClients::creer(void)
 
 void GestionClients::modifier(void)
 {
+	try
+	{
+		String^ constr = "Server=127.0.0.1;user=root;Password=Password123;Database=ProjetBDD";
+		MySqlConnection^ con = gcnew MySqlConnection(constr);
+
+		int id = Int32::Parse(textBox1->Text);
+		String^ nom = textBox4->Text;
+		String^ prenom = textBox2->Text;
+		String^ date_naissance = textBox3->Text;
+
+		MySqlCommand^ cmd = gcnew MySqlCommand("update matable nom='" + nom + "',prenom='" + prenom + "',date_naissance='" + date_naissance + "' WHERE id=" + id, con);
+		MySqlDataReader^ dr;
+		con->Open();
+		dr = cmd->ExecuteReader();
+
+		con->Close();
+
+		MessageBox::Show("Informations mises à jour");
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message);
+	}
 }
 
 void GestionClients::supprimer(void)
