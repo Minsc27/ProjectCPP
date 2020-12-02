@@ -28,6 +28,24 @@ void GestionPersonnel::creer(void)
 
 void GestionPersonnel::modifier(void)
 {
+	try
+	{
+		String^ Constring = "Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("update matable set name='" + nom + "',prenom='" + prenom + "',annee='" + annee + "',mois='" + mois + "' ,jour='" + jour + "' WHERE id=" + id, ConnectDB);
+		MySqlDataReader^ DR;
+		ConnectDB->Open();
+		DR = Adapt1->ExecuteReader();
+
+		ConnectDB->Close();
+
+		MessageBox::Show("Informations mises à jour");
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message);
+	}
 }
 
 void GestionPersonnel::supprimer(void)
