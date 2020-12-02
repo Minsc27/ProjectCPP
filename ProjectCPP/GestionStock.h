@@ -13,6 +13,7 @@ public:
     void supprimer(void) override;
     void afficher(void) override;
     int changement_tarif(void);
+    //void ConvertDate(String^);
 
 protected:
 private:

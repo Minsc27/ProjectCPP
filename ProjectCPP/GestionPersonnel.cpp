@@ -37,3 +37,14 @@ void GestionPersonnel::supprimer(void)
 void GestionPersonnel::afficher(void)
 {
 }
+
+void GestionPersonnel::ConvertDate(String^ _date)
+{
+	for (int i = 0; i < 4; i++) {
+		annee += _date[i];
+	}
+	for (int i = 5; i < 7; i++) {
+		mois += _date[i];
+		jour += _date[i + 3];
+	}
+}

@@ -1,8 +1,7 @@
 #pragma once
 #include "Strategy.h"
 #include "Type_paiement.h"
-
-class quantite;
+#include "quantite.h"
 
 ref class GestionCommandes 
 	: public Strategy
@@ -14,6 +13,7 @@ public:
 	void modifier(void) override;
 	void supprimer(void) override;
 	void afficher(void) override;
+	//void ConvertDate(String^);
 
 	quantite** Association_5;
 
@@ -26,5 +26,9 @@ private:
 	String^ date_paiement;
 	String^ type_paiement;
 	String^ date_reglement;
+
+	String^ annee;
+	String^ mois;
+	String^ jour;
 };
 
