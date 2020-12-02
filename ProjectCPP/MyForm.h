@@ -1564,12 +1564,12 @@ private: System::Windows::Forms::Label^ labelID;
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-			this->textBoxID->Hide();
-			this->labelID->Hide();
 			this->groupBoxClient->Hide();
 			this->groupBoxCommande->Hide();
 			this->groupBoxPersonnel->Hide();
 			this->groupBoxStock->Hide();
+			this->textBoxID->Hide();
+			this->labelID->Hide();
 		}
 
 #pragma endregion
@@ -1614,26 +1614,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			int ID = Convert::ToInt32(textBoxID->Text);
 			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text, ID);
 			this->strategy_->modifier();
-		}
-		if (typeStrategy == "supprimer") {
-		}
-		if (typeStrategy == "rechercher") {
-		}
-		try {
-			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
-			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
-			DataTable^ DT = gcnew DataTable();
-			Adapt->Fill(DT);
-			bindingSource1->DataSource = DT;
-			dataGridView1->DataSource = bindingSource1;
-		}
-		catch (exception e) {}
-	}
-	if (typeGestion == "client") {
-		if (typeStrategy == "creer") {
-		}
-		if (typeStrategy == "modifier") {
 		}
 		if (typeStrategy == "supprimer") {
 		}

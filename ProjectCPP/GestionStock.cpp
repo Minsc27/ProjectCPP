@@ -28,28 +28,33 @@ void GestionStock::creer(void)
 
 void GestionStock::modifier(void)
 {
-	try
+	/*try
 	{
 		String^ Constring = "Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
-		MySqlCommand^ Adapt1 = gcnew MySqlCommand("update matable prixHT='" + prixHT + "',stock='" + stock + "',couleur='" + couleur + "',nature='" + nature + "' WHERE id=" + id, ConnectDB);
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("update stock prixHT='" + prixHT + "',stock='" + stock + "',couleur='" + couleur + "',nature='" + nature + "' WHERE id=" + IDstock1, ConnectDB);
 		MySqlDataReader^ DR;
 		ConnectDB->Open();
 		DR = Adapt1->ExecuteReader();
-
 		ConnectDB->Close();
-
-		MessageBox::Show("Informations mises à jour");
 	}
-	catch (Exception^ ex)
-	{
-		MessageBox::Show(ex->Message);
-	}
+	catch (exception e){}*/
 }
 
 void GestionStock::supprimer(void)
 {
+	/*try {
+		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("delete from stock WHERE IDCLIENT = " + IDstock1, ConnectDB);
+		MySqlDataReader^ DR;
+		ConnectDB->Open();
+		DR = Adapt1->ExecuteReader();
+		ConnectDB->Close();
+	}
+	catch (exception e) {}*/
 }
 
 void GestionStock::afficher(void)

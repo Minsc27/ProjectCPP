@@ -52,6 +52,17 @@ void GestionClients::modifier(void)
 
 void GestionClients::supprimer(void)
 {
+	try {
+		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("delete from client WHERE IDCLIENT = " + IDclient1, ConnectDB);
+		MySqlDataReader^ DR;
+		ConnectDB->Open();
+		DR = Adapt1->ExecuteReader();
+		ConnectDB->Close();
+	}
+	catch (exception e) {}
 }
 
 void GestionClients::afficher(void)

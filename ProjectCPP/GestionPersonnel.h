@@ -11,7 +11,6 @@ public:
     void modifier(void) override;
     void supprimer(void) override;
     void afficher(void) override;
-    void ConvertDate(String^);
 
 protected:
 private:
