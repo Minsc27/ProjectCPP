@@ -7,8 +7,8 @@ ref class GestionClients :
 {
 public:
     GestionClients();
-    GestionClients(String^, String^,String^,String^,String^);
-    GestionClients(String^, String^, String^, String^, String^, int);
+    GestionClients(String^, String^,String^,String^,String^, adresse^, adresse^);
+    GestionClients(String^, String^, String^, String^, String^, int, adresse^, adresse^);
     void creer(void) override;
     void modifier(void) override;
     void supprimer(void) override;
@@ -27,7 +27,8 @@ private:
     String^ mois;
     String^ jour;
 
-    adresse* adresse;
+    adresse^ adresse_facturation;
+    adresse^ adresse_livraison;
 
     String^ rue_livraison;
     String^ rue_facturation;

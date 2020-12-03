@@ -6,6 +6,7 @@
 #include "GestionPersonnel.h"
 #include "GestionStock.h"
 #include "GestionStatistiques.h"
+#include "adresse.h"
 
 namespace ProjectCPP {
 
@@ -241,6 +242,8 @@ private: System::Windows::Forms::Label^ labelID;
 
 	   String^ typeStrategy;
 	   String^ typeGestion;
+	   adresse^ adresse_livraison;
+	   adresse^ adresse_facturation;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -1606,23 +1609,43 @@ private: System::Void supprimerToolStripMenuItem_Click(System::Object^ sender, S
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (typeGestion == "client") {
+		int codePostallivrer = Convert::ToInt32(code_postal_adresse_livraisonClient->Text);
+		int codePostalfacturer = Convert::ToInt32(code_postal_adresse_facturationClient->Text);
+		adresse_livraison = gcnew adresse(rue_adresse_livraisonClient->Text, codePostallivrer, ville_adresse_livraisonClient->Text);
+		adresse_facturation = gcnew adresse(rue_adresse_facturationClient->Text, codePostalfacturer, ville_adresse_facturationClient->Text);
 		if (typeStrategy == "creer") {
-			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text);
+			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text, adresse_livraison,adresse_facturation);
 			this->strategy_->creer();
-		}
-		if (typeStrategy == "modifier") {
-			int ID = Convert::ToInt32(textBoxID->Text);
-			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text, ID);
-			this->strategy_->modifier();
-		}
-		if (typeStrategy == "supprimer") {
-		}
-		if (typeStrategy == "rechercher") {
 		}
 		try {
 			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, LIVRER, ADRESSE WHERE client.IDCLIENT = livrer.IDCLIENT and livrer.IDADRESSE = adresse.IDADRESSE union SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, FACTURER, ADRESSE WHERE client.IDCLIENT = facturer.IDCLIENT and facturer.IDADRESSE = adresse.IDADRESSE", ConnectDB);
+			DataTable^ DT = gcnew DataTable();
+			Adapt->Fill(DT);
+			bindingSource1->DataSource = DT;
+			dataGridView1->DataSource = bindingSource1;
+		}
+		catch (exception e) {}
+		if (typeStrategy == "modifier") {
+			int ID = Convert::ToInt32(textBoxID->Text);
+			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text, ID, adresse_livraison, adresse_facturation);
+			this->strategy_->modifier();
+		}
+		if (typeStrategy == "supprimer") {
+			int ID = Convert::ToInt32(textBoxID->Text);
+			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text, ID, adresse_livraison, adresse_facturation);
+			this->strategy_->supprimer();
+		}
+		if (typeStrategy == "rechercher") {
+			int ID = Convert::ToInt32(textBoxID->Text);
+			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text, ID, adresse_livraison, adresse_facturation);
+			this->strategy_->afficher();
+		}
+		try {
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, LIVRER, ADRESSE WHERE client.IDCLIENT = livrer.IDCLIENT and livrer.IDADRESSE = adresse.IDADRESSE union SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, FACTURER, ADRESSE WHERE client.IDCLIENT = facturer.IDCLIENT and facturer.IDADRESSE = adresse.IDADRESSE", ConnectDB);
 			DataTable^ DT = gcnew DataTable();
 			Adapt->Fill(DT);
 			bindingSource1->DataSource = DT;
@@ -1630,8 +1653,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		}
 		catch (exception e) {}
 	}
-
-
 	if (typeGestion == "commande") {
 		if (typeStrategy == "creer") {
 		}
@@ -1642,9 +1663,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		if (typeStrategy == "rechercher") {
 		}
 		try {
-			String^ Constring = L"Server=127.0.0.1;user=root;password=Password1234;Database=ProjetBDD";
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter();
 			DataTable^ DT = gcnew DataTable();
 			Adapt->Fill(DT);
 			bindingSource1->DataSource = DT;
@@ -1653,12 +1674,25 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		catch (exception e) {}
 	}
 	if (typeGestion == "personnel") {
+		int codePostal = Convert::ToInt32(code_postal_adresse_livraisonPersonnel->Text);
+		adresse_livraison = gcnew adresse(rue_adresse_livraisonPersonnel->Text, codePostal, ville_adresse_livraisonPersonnel->Text);
 		if (typeStrategy == "creer") {
-			strategy_ = gcnew GestionPersonnel(nomPersonnel->Text, prenomPersonnel->Text, annee_date_embauchePersonnel->Text, mois_date_embauchePersonnel->Text, jour_date_embauchePersonnel->Text);
+			strategy_ = gcnew GestionPersonnel(nomPersonnel->Text, prenomPersonnel->Text, annee_date_embauchePersonnel->Text, mois_date_embauchePersonnel->Text, jour_date_embauchePersonnel->Text, adresse_livraison);
 			this->strategy_->creer();
 		}
+		try {
+			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("SELECT RUE, VILLE,CODE_POSTAL,NOM_P,PRENOM_P,DATE_EMBAUCHE,IDPERSONNEL  FROM PERSONNEL, ADRESSE WHERE adresse.IDADRESSE = personnel.IDADRESSE", ConnectDB);
+			DataTable^ DT = gcnew DataTable();
+			Adapt->Fill(DT);
+			bindingSource1->DataSource = DT;
+			dataGridView1->DataSource = bindingSource1;
+		}
+		catch (exception e) {}
 		if (typeStrategy == "modifier") {
-			strategy_ = gcnew GestionPersonnel(nomPersonnel->Text, prenomPersonnel->Text, annee_date_embauchePersonnel->Text, mois_date_embauchePersonnel->Text, jour_date_embauchePersonnel->Text);
+			int ID = Convert::ToInt32(textBoxID->Text);
+			strategy_ = gcnew GestionPersonnel(nomPersonnel->Text, prenomPersonnel->Text, annee_date_embauchePersonnel->Text, mois_date_embauchePersonnel->Text, jour_date_embauchePersonnel->Text,ID, adresse_livraison);
 			this->strategy_->modifier();
 		}
 		if (typeStrategy == "supprimer") {
@@ -1668,7 +1702,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		try {
 			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from personnel", ConnectDB);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("SELECT RUE, VILLE,CODE_POSTAL,NOM_P,PRENOM_P,DATE_EMBAUCHE,IDPERSONNEL  FROM PERSONNEL, ADRESSE WHERE adresse.IDADRESSE = personnel.IDADRESSE", ConnectDB);
 			DataTable^ DT = gcnew DataTable();
 			Adapt->Fill(DT);
 			bindingSource1->DataSource = DT;

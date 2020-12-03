@@ -1,24 +1,22 @@
 #pragma once
-#include <iostream>
+using namespace System;
 
-class adresse
+ref class adresse
 {
 public:
 	adresse();
-	adresse(std::string,int, std::string, std::string, int, std::string);
-	std::string Getruelivraison() { return rue_livraison; }
-	std::string Getrvillelivraison() { return ville_livraison; }
-	int Getcode_postallivraison() { return code_postal_livraison; }
-	std::string Getruefacturation() { return rue_facturation; }
-	std::string Getrvillefacturation() { return ville_facturation; }
-	int Getcode_postalfacturation() { return code_postal_facturation; }
+	adresse(String^, int^, String^);
+	adresse(String^, int^, String^, String^, int^, String^);
+	String^ Getruelivraison() { return rue_livraison; }
+	String^ Getvillelivraison() { return ville_livraison; }
+	int^ Getcode_postallivraison() { return code_postal_livraison; }
+	int GetIDadresse() { return IDadresse; }
 protected:
 private:
-	std::string rue_livraison;
-	int code_postal_livraison;
-	std::string ville_livraison;
-	std::string rue_facturation;
-	int code_postal_facturation;
-	std::string ville_facturation;
+	static int IDadresse1 = 0;
+	int IDadresse;
+	String^ rue_livraison;
+	int^ code_postal_livraison;
+	String^ ville_livraison;
 };
 
