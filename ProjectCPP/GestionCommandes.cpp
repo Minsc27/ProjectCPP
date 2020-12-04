@@ -19,11 +19,11 @@ void GestionCommandes::creer(void)
 		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
-		MySqlCommand^ Adapt3 = gcnew MySqlCommand("insert into commande values(" + IDcommandes + ","+ _type_paiement->getIDpaiement() +",'" + annee_livraison + "-" + mois_livraison + "-" + jour_livraison + "','" + annee_emission + "-" + mois_emission + "-" + jour_emission + "', '"+ 248 +"', '"+ 20 +"' , '" + 248 +"', '" + "reference" +"')", ConnectDB);
-		MySqlCommand^ Adapt4 = gcnew MySqlCommand("insert into association12 values("+ _article +","+ _quantite->Getquantite_article() +")", ConnectDB);
-		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into type_de_paiement("+ _type_paiement->getIDpaiement() +","+ _type_paiement->gettype_paiement() +")", ConnectDB);
-		MySqlCommand^ Adapt2 = gcnew MySqlCommand("insert into paiement("+ _type_paiement->gettype_paiement() +",'"+ _type_paiement->gettype_paiement() +"', '"+ annee_paiement +"-" + mois_paiement +"-"+ jour_paiement +"','"+_type_paiement->getmontant()+"')", ConnectDB);
-		MySqlCommand^ Adapt5 = gcnew MySqlCommand("insert into passer ("+ _client +","+ IDcommandes +")", ConnectDB);
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into type_de_paiement values(" + _type_paiement->getIDpaiement() + ",'" + _type_paiement->gettype_paiement() + "')", ConnectDB);
+		MySqlCommand^ Adapt2 = gcnew MySqlCommand("insert into paiement values(" + _type_paiement->getIDpaiement() + ",'" + _type_paiement->getIDpaiement() + "', '" + annee_paiement + "-" + mois_paiement + "-" + jour_paiement + "','" + _type_paiement->getmontant() + "')", ConnectDB);
+		MySqlCommand^ Adapt3 = gcnew MySqlCommand("insert into commande values(" + IDcommandes + ",'"+ _type_paiement->getIDpaiement() +"','" + annee_livraison + "-" + mois_livraison + "-" + jour_livraison + "','" + annee_emission + "-" + mois_emission + "-" + jour_emission + "', '"+ 248 +"', '"+ 20 +"' , '" + 248 +"', '" + "reference" +"')", ConnectDB);
+		MySqlCommand^ Adapt4 = gcnew MySqlCommand("insert into association_12 values("+ _article +",'"+ IDcommandes +"','"+ _quantite->Getquantite_article() +"')", ConnectDB);
+		MySqlCommand^ Adapt5 = gcnew MySqlCommand("insert into passer values("+ _client +","+ IDcommandes +")", ConnectDB);
 
 		MySqlDataReader^ DR;
 		MySqlDataReader^ DR1;
