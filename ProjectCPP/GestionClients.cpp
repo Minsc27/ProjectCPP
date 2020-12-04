@@ -7,6 +7,7 @@
 GestionClients::GestionClients() : nom(), prenom(), annee(),mois(),jour()
 {
 	IDclient++;
+	IDclient1 = IDclient;
 }
 
 GestionClients::GestionClients(String^ _nom, String^ _prenom,String^ _annee,String^ _mois, String^ _jour, adresse^ _adresse_livraison, adresse^ _adresse_facturation) : nom(_nom),prenom(_prenom), annee(_annee), mois(_mois), jour(_jour)
@@ -14,6 +15,7 @@ GestionClients::GestionClients(String^ _nom, String^ _prenom,String^ _annee,Stri
 	adresse_facturation = _adresse_facturation;
 	adresse_livraison = _adresse_livraison;
 	IDclient++;
+	IDclient1 = IDclient;
 }
 
 GestionClients::GestionClients(String^ _nom, String^ _prenom, String^ _annee, String^ _mois, String^ _jour, int _IDclient, adresse^ _adresse_livraison, adresse^ _adresse_facturation) : nom(_nom), prenom(_prenom), annee(_annee), mois(_mois), jour(_jour), IDclient1(_IDclient)
@@ -36,7 +38,7 @@ void GestionClients::creer(void)
 		MySqlCommand^ Adapt5 = gcnew MySqlCommand("insert into livrer values(" + adresse_livraison->GetIDadresse() +"," + IDclient + ")", ConnectDB);
 
 		MySqlDataReader^ DR;
-		MySqlDataReader^ DR1;
+		MySqlDataReader^ DR1; 
 		MySqlDataReader^ DR2;
 		MySqlDataReader^ DR3;
 		MySqlDataReader^ DR4;
@@ -93,7 +95,7 @@ void GestionClients::supprimer(void)
 
 void GestionClients::afficher(void)
 {
-	try {
+	/*try {
 		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
@@ -103,7 +105,7 @@ void GestionClients::afficher(void)
 		DR = Adapt1->ExecuteReader();
 		ConnectDB->Close();
 	}
-	catch (exception e) {}
+	catch (exception e) {}*/
 }
 
 int GestionClients::GetIDclient(void)

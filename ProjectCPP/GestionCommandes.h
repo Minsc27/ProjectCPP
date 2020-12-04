@@ -2,6 +2,8 @@
 #include "Strategy.h"
 #include "Type_paiement.h"
 #include "quantite.h"
+#include "GestionClients.h"
+#include "GestionStock.h"
 
 ref class type_paiement;
 
@@ -10,29 +12,34 @@ ref class GestionCommandes
 {
 public:
 	GestionCommandes();
-	GestionCommandes(int, String^, String^, String^, String^, String^);
+	GestionCommandes(int,int,Type_paiement^,quantite^,String^,String^,String^,String^,String^,String^,String^,String^,String^,String^,String^,String^);
 	void creer(void) override;
 	void modifier(void) override;
 	void supprimer(void) override;
 	void afficher(void) override;
 	//void ConvertDate(String^);
 
-	quantite** Association_5;
-
 protected:
 private:
-	Type_paiement^ type_paiement1;
+	quantite^ _quantite;
+	Type_paiement^ _type_paiement;
+	int _article;
+
 
 	static int IDcommandes = 0;
-	int reference;
-	String^ date_emission;
-	String^ date_livraison;
-	String^ date_paiement;
-	String^ type_paiement;
-	String^ date_reglement;
 
-	String^ annee;
-	String^ mois;
-	String^ jour;
+	int _client;
+	String^ annee_emission;
+	String^ mois_emission;
+	String^ jour_emission;
+	String^ annee_livraison;
+	String^ mois_livraison;
+	String^ jour_livraison;
+	String^ annee_paiement;
+	String^ mois_paiement;
+	String^ jour_paiement;
+	String^ annee_reglement;
+	String^ mois_reglement;
+	String^ jour_reglement;
 };
 

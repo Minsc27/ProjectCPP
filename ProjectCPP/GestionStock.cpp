@@ -4,14 +4,16 @@
 GestionStock::GestionStock() : prixHT(), reference(), TVA(), stock(), couleur(), nature()
 {
 	IDstock++;
+	IDstock1 = IDstock;
 }
 
-GestionStock::GestionStock(double _prixHT, String^ _reference, double _TVA, String^ _couleur, String^ _nature) : prixHT(_prixHT), reference(_reference), TVA(_TVA), couleur(_couleur), nature(_nature)
+GestionStock::GestionStock(String^ _prixHT, String^ _reference, String^ _TVA, String^ _couleur, String^ _nature) : prixHT(_prixHT), reference(_reference), TVA(_TVA), couleur(_couleur), nature(_nature)
 {
 	IDstock++;
+	IDstock1 = IDstock;
 }
 
-GestionStock::GestionStock(double _prixHT, String^ _reference, double _TVA, String^ _couleur, String^ _nature, int _IDstock) : prixHT(_prixHT), reference(_reference), TVA(_TVA), couleur(_couleur), nature(_nature), IDstock1(_IDstock)
+GestionStock::GestionStock(String^ _prixHT, String^ _reference, String^ _TVA, String^ _couleur, String^ _nature, int _IDstock) : prixHT(_prixHT), reference(_reference), TVA(_TVA), couleur(_couleur), nature(_nature), IDstock1(_IDstock)
 {
 }
 
@@ -21,7 +23,7 @@ void GestionStock::creer(void)
 		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
 
-		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into article values(" + IDstock + ",'" + prixHT + "','" + reference + "','" + TVA + "','" + couleur + "','" + nature + "')", ConnectDB);
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("insert into article values(" + IDstock + ",'" + 1 + "','" + 100 + "','" + reference + "','" + prixHT + "','" + TVA + "')", ConnectDB);
 		MySqlDataReader^ DR;
 		ConnectDB->Open();
 		DR = Adapt1->ExecuteReader();

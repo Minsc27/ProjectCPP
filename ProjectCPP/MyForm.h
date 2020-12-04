@@ -156,7 +156,7 @@ private: System::Windows::Forms::Label^ label15;
 private: System::Windows::Forms::Label^ label20;
 private: System::Windows::Forms::Label^ label5;
 
-private: System::Windows::Forms::TextBox^ type_paiementCommande;
+
 
 
 
@@ -243,6 +243,17 @@ private: System::Windows::Forms::Label^ labelID;
 	   String^ typeStrategy;
 	   String^ typeGestion;
 	   adresse^ adresse_livraison;
+private: System::Windows::Forms::ComboBox^ type_paiementCommande;
+private: System::Windows::Forms::Label^ label47;
+private: System::Windows::Forms::Label^ label48;
+private: System::Windows::Forms::Label^ label46;
+private: System::Windows::Forms::TextBox^ montantCommande;
+private: System::Windows::Forms::TextBox^ IDarticleCommande;
+private: System::Windows::Forms::TextBox^ IDclientCommande;
+private: System::Windows::Forms::Label^ label50;
+private: System::Windows::Forms::TextBox^ quantiteCommande;
+private: System::Windows::Forms::Label^ label51;
+private: System::Windows::Forms::TextBox^ nbpaiementCommande;
 	   adresse^ adresse_facturation;
 		/// <summary>
 		/// Required designer variable.
@@ -326,6 +337,15 @@ private: System::Windows::Forms::Label^ labelID;
 			this->rue_adresse_livraisonPersonnel = (gcnew System::Windows::Forms::TextBox());
 			this->ville_adresse_livraisonPersonnel = (gcnew System::Windows::Forms::TextBox());
 			this->groupBoxCommande = (gcnew System::Windows::Forms::GroupBox());
+			this->label50 = (gcnew System::Windows::Forms::Label());
+			this->label47 = (gcnew System::Windows::Forms::Label());
+			this->label48 = (gcnew System::Windows::Forms::Label());
+			this->label46 = (gcnew System::Windows::Forms::Label());
+			this->quantiteCommande = (gcnew System::Windows::Forms::TextBox());
+			this->montantCommande = (gcnew System::Windows::Forms::TextBox());
+			this->IDarticleCommande = (gcnew System::Windows::Forms::TextBox());
+			this->IDclientCommande = (gcnew System::Windows::Forms::TextBox());
+			this->type_paiementCommande = (gcnew System::Windows::Forms::ComboBox());
 			this->label38 = (gcnew System::Windows::Forms::Label());
 			this->label32 = (gcnew System::Windows::Forms::Label());
 			this->label26 = (gcnew System::Windows::Forms::Label());
@@ -347,7 +367,6 @@ private: System::Windows::Forms::Label^ labelID;
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->label20 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->type_paiementCommande = (gcnew System::Windows::Forms::TextBox());
 			this->label33 = (gcnew System::Windows::Forms::Label());
 			this->label27 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
@@ -378,6 +397,8 @@ private: System::Windows::Forms::Label^ labelID;
 			this->referenceStock = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxID = (gcnew System::Windows::Forms::TextBox());
 			this->labelID = (gcnew System::Windows::Forms::Label());
+			this->nbpaiementCommande = (gcnew System::Windows::Forms::TextBox());
+			this->label51 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->bindingSource1))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -1013,6 +1034,17 @@ private: System::Windows::Forms::Label^ labelID;
 			// 
 			// groupBoxCommande
 			// 
+			this->groupBoxCommande->Controls->Add(this->label51);
+			this->groupBoxCommande->Controls->Add(this->label50);
+			this->groupBoxCommande->Controls->Add(this->label47);
+			this->groupBoxCommande->Controls->Add(this->label48);
+			this->groupBoxCommande->Controls->Add(this->label46);
+			this->groupBoxCommande->Controls->Add(this->nbpaiementCommande);
+			this->groupBoxCommande->Controls->Add(this->quantiteCommande);
+			this->groupBoxCommande->Controls->Add(this->montantCommande);
+			this->groupBoxCommande->Controls->Add(this->IDarticleCommande);
+			this->groupBoxCommande->Controls->Add(this->IDclientCommande);
+			this->groupBoxCommande->Controls->Add(this->type_paiementCommande);
 			this->groupBoxCommande->Controls->Add(this->label38);
 			this->groupBoxCommande->Controls->Add(this->label32);
 			this->groupBoxCommande->Controls->Add(this->label26);
@@ -1034,7 +1066,6 @@ private: System::Windows::Forms::Label^ labelID;
 			this->groupBoxCommande->Controls->Add(this->label15);
 			this->groupBoxCommande->Controls->Add(this->label20);
 			this->groupBoxCommande->Controls->Add(this->label5);
-			this->groupBoxCommande->Controls->Add(this->type_paiementCommande);
 			this->groupBoxCommande->Controls->Add(this->label33);
 			this->groupBoxCommande->Controls->Add(this->label27);
 			this->groupBoxCommande->Controls->Add(this->label12);
@@ -1053,10 +1084,83 @@ private: System::Windows::Forms::Label^ labelID;
 			this->groupBoxCommande->Controls->Add(this->jour_date_emissionCommande);
 			this->groupBoxCommande->Location = System::Drawing::Point(165, 31);
 			this->groupBoxCommande->Name = L"groupBoxCommande";
-			this->groupBoxCommande->Size = System::Drawing::Size(397, 403);
+			this->groupBoxCommande->Size = System::Drawing::Size(397, 448);
 			this->groupBoxCommande->TabIndex = 7;
 			this->groupBoxCommande->TabStop = false;
 			this->groupBoxCommande->Text = L"Commande";
+			// 
+			// label50
+			// 
+			this->label50->AutoSize = true;
+			this->label50->Location = System::Drawing::Point(102, 388);
+			this->label50->Name = L"label50";
+			this->label50->Size = System::Drawing::Size(59, 17);
+			this->label50->TabIndex = 9;
+			this->label50->Text = L"quantite";
+			// 
+			// label47
+			// 
+			this->label47->AutoSize = true;
+			this->label47->Location = System::Drawing::Point(102, 359);
+			this->label47->Name = L"label47";
+			this->label47->Size = System::Drawing::Size(59, 17);
+			this->label47->TabIndex = 9;
+			this->label47->Text = L"montant";
+			// 
+			// label48
+			// 
+			this->label48->AutoSize = true;
+			this->label48->Location = System::Drawing::Point(102, 57);
+			this->label48->Name = L"label48";
+			this->label48->Size = System::Drawing::Size(59, 17);
+			this->label48->TabIndex = 9;
+			this->label48->Text = L"IDarticle";
+			// 
+			// label46
+			// 
+			this->label46->AutoSize = true;
+			this->label46->Location = System::Drawing::Point(107, 24);
+			this->label46->Name = L"label46";
+			this->label46->Size = System::Drawing::Size(54, 17);
+			this->label46->TabIndex = 9;
+			this->label46->Text = L"IDclient";
+			// 
+			// quantiteCommande
+			// 
+			this->quantiteCommande->Location = System::Drawing::Point(189, 385);
+			this->quantiteCommande->Name = L"quantiteCommande";
+			this->quantiteCommande->Size = System::Drawing::Size(202, 22);
+			this->quantiteCommande->TabIndex = 8;
+			// 
+			// montantCommande
+			// 
+			this->montantCommande->Location = System::Drawing::Point(189, 354);
+			this->montantCommande->Name = L"montantCommande";
+			this->montantCommande->Size = System::Drawing::Size(202, 22);
+			this->montantCommande->TabIndex = 8;
+			// 
+			// IDarticleCommande
+			// 
+			this->IDarticleCommande->Location = System::Drawing::Point(189, 54);
+			this->IDarticleCommande->Name = L"IDarticleCommande";
+			this->IDarticleCommande->Size = System::Drawing::Size(202, 22);
+			this->IDarticleCommande->TabIndex = 8;
+			// 
+			// IDclientCommande
+			// 
+			this->IDclientCommande->Location = System::Drawing::Point(189, 21);
+			this->IDclientCommande->Name = L"IDclientCommande";
+			this->IDclientCommande->Size = System::Drawing::Size(202, 22);
+			this->IDclientCommande->TabIndex = 8;
+			// 
+			// type_paiementCommande
+			// 
+			this->type_paiementCommande->FormattingEnabled = true;
+			this->type_paiementCommande->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"cheque", L"espece", L"virement" });
+			this->type_paiementCommande->Location = System::Drawing::Point(189, 90);
+			this->type_paiementCommande->Name = L"type_paiementCommande";
+			this->type_paiementCommande->Size = System::Drawing::Size(202, 24);
+			this->type_paiementCommande->TabIndex = 7;
 			// 
 			// label38
 			// 
@@ -1241,25 +1345,16 @@ private: System::Windows::Forms::Label^ labelID;
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(64, 90);
+			this->label5->Location = System::Drawing::Point(64, 95);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(97, 17);
 			this->label5->TabIndex = 4;
 			this->label5->Text = L"type paiement";
 			// 
-			// type_paiementCommande
-			// 
-			this->type_paiementCommande->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->type_paiementCommande->Location = System::Drawing::Point(189, 87);
-			this->type_paiementCommande->Name = L"type_paiementCommande";
-			this->type_paiementCommande->Size = System::Drawing::Size(202, 22);
-			this->type_paiementCommande->TabIndex = 3;
-			// 
 			// label33
 			// 
 			this->label33->AutoSize = true;
-			this->label33->Location = System::Drawing::Point(57, 324);
+			this->label33->Location = System::Drawing::Point(69, 323);
 			this->label33->Name = L"label33";
 			this->label33->Size = System::Drawing::Size(92, 17);
 			this->label33->TabIndex = 4;
@@ -1268,16 +1363,17 @@ private: System::Windows::Forms::Label^ labelID;
 			// label27
 			// 
 			this->label27->AutoSize = true;
-			this->label27->Location = System::Drawing::Point(57, 264);
+			this->label27->Location = System::Drawing::Point(58, 264);
 			this->label27->Name = L"label27";
 			this->label27->Size = System::Drawing::Size(103, 17);
 			this->label27->TabIndex = 4;
 			this->label27->Text = L"date reglement";
+			this->label27->Click += gcnew System::EventHandler(this, &MyForm::label27_Click);
 			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(57, 207);
+			this->label12->Location = System::Drawing::Point(63, 207);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(98, 17);
 			this->label12->TabIndex = 4;
@@ -1286,7 +1382,7 @@ private: System::Windows::Forms::Label^ labelID;
 			// label24
 			// 
 			this->label24->AutoSize = true;
-			this->label24->Location = System::Drawing::Point(57, 149);
+			this->label24->Location = System::Drawing::Point(66, 149);
 			this->label24->Name = L"label24";
 			this->label24->Size = System::Drawing::Size(95, 17);
 			this->label24->TabIndex = 4;
@@ -1432,6 +1528,7 @@ private: System::Windows::Forms::Label^ labelID;
 			// couleur
 			// 
 			this->couleur->FormattingEnabled = true;
+			this->couleur->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"jaune", L"rouge", L"vert", L"bleu", L"orange" });
 			this->couleur->Location = System::Drawing::Point(189, 228);
 			this->couleur->Name = L"couleur";
 			this->couleur->Size = System::Drawing::Size(202, 24);
@@ -1534,6 +1631,22 @@ private: System::Windows::Forms::Label^ labelID;
 			this->labelID->TabIndex = 9;
 			this->labelID->Text = L"ID";
 			// 
+			// nbpaiementCommande
+			// 
+			this->nbpaiementCommande->Location = System::Drawing::Point(189, 413);
+			this->nbpaiementCommande->Name = L"nbpaiementCommande";
+			this->nbpaiementCommande->Size = System::Drawing::Size(202, 22);
+			this->nbpaiementCommande->TabIndex = 8;
+			// 
+			// label51
+			// 
+			this->label51->AutoSize = true;
+			this->label51->Location = System::Drawing::Point(23, 416);
+			this->label51->Name = L"label51";
+			this->label51->Size = System::Drawing::Size(138, 17);
+			this->label51->TabIndex = 9;
+			this->label51->Text = L"nombre de paiement";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -1616,21 +1729,31 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		if (typeStrategy == "creer") {
 			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text, adresse_livraison,adresse_facturation);
 			this->strategy_->creer();
+			try {
+				String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+				MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+				MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, LIVRER, ADRESSE WHERE client.IDCLIENT = livrer.IDCLIENT and livrer.IDADRESSE = adresse.IDADRESSE union SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, FACTURER, ADRESSE WHERE client.IDCLIENT = facturer.IDCLIENT and facturer.IDADRESSE = adresse.IDADRESSE", ConnectDB);
+				DataTable^ DT = gcnew DataTable();
+				Adapt->Fill(DT);
+				bindingSource1->DataSource = DT;
+				dataGridView1->DataSource = bindingSource1;
+			}
+			catch (exception e) {}
 		}
-		try {
-			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
-			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, LIVRER, ADRESSE WHERE client.IDCLIENT = livrer.IDCLIENT and livrer.IDADRESSE = adresse.IDADRESSE union SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, FACTURER, ADRESSE WHERE client.IDCLIENT = facturer.IDCLIENT and facturer.IDADRESSE = adresse.IDADRESSE", ConnectDB);
-			DataTable^ DT = gcnew DataTable();
-			Adapt->Fill(DT);
-			bindingSource1->DataSource = DT;
-			dataGridView1->DataSource = bindingSource1;
-		}
-		catch (exception e) {}
 		if (typeStrategy == "modifier") {
 			int ID = Convert::ToInt32(textBoxID->Text);
 			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text, ID, adresse_livraison, adresse_facturation);
 			this->strategy_->modifier();
+			try {
+				String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+				MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+				MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, LIVRER, ADRESSE WHERE client.IDCLIENT = livrer.IDCLIENT and livrer.IDADRESSE = adresse.IDADRESSE union SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, FACTURER, ADRESSE WHERE client.IDCLIENT = facturer.IDCLIENT and facturer.IDADRESSE = adresse.IDADRESSE", ConnectDB);
+				DataTable^ DT = gcnew DataTable();
+				Adapt->Fill(DT);
+				bindingSource1->DataSource = DT;
+				dataGridView1->DataSource = bindingSource1;
+			}
+			catch (exception e) {}
 		}
 		if (typeStrategy == "supprimer") {
 			int ID = Convert::ToInt32(textBoxID->Text);
@@ -1642,19 +1765,19 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			strategy_ = gcnew GestionClients(nomClient->Text, prenomClient->Text, annee_date_naissanceClient->Text, mois_date_naissanceClient->Text, jour_date_naissanceClient->Text, ID, adresse_livraison, adresse_facturation);
 			this->strategy_->afficher();
 		}
-		try {
-			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
-			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, LIVRER, ADRESSE WHERE client.IDCLIENT = livrer.IDCLIENT and livrer.IDADRESSE = adresse.IDADRESSE union SELECT RUE, VILLE, CODE_POSTAL, NOM_C, PRENOM_C, ANNIVERSAIRE, PREMIERE_COMMANDE  FROM CLIENT, FACTURER, ADRESSE WHERE client.IDCLIENT = facturer.IDCLIENT and facturer.IDADRESSE = adresse.IDADRESSE", ConnectDB);
-			DataTable^ DT = gcnew DataTable();
-			Adapt->Fill(DT);
-			bindingSource1->DataSource = DT;
-			dataGridView1->DataSource = bindingSource1;
-		}
-		catch (exception e) {}
+		
 	}
 	if (typeGestion == "commande") {
 		if (typeStrategy == "creer") {
+			int IDclient = Convert::ToInt32(IDclientCommande->Text);
+			int nbpaiement = Convert::ToInt32(nbpaiementCommande->Text);
+			double montant = Convert::ToDouble(montantCommande->Text);
+			int IDarticle = Convert::ToInt32(IDarticleCommande->Text);
+			Type_paiement^ _type_paiement = gcnew Type_paiement(type_paiementCommande->Text,montant , nbpaiement);
+			int quantitearticle = Convert::ToInt32(quantiteCommande->Text);
+			quantite^ _quantite = gcnew quantite(quantitearticle);
+			strategy_ = gcnew GestionCommandes(IDarticle,IDclient,_type_paiement,_quantite,annee_date_emissionCommande->Text,mois_date_emissionCommande->Text,jour_date_emissionCommande->Text,annee_date_livraisonCommande->Text,mois_date_livraisonCommande->Text,jour_date_livraisonCommande->Text,annee_date_paiementCommande->Text,mois_date_paiementCommande->Text,jour_date_paiementCommande->Text,annee_date_reglementCommande->Text,mois_date_reglementCommande->Text,jour_date_reglementCommande->Text);
+			strategy_->creer();
 		}
 		if (typeStrategy == "modifier") {
 		}
@@ -1665,7 +1788,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		try {
 			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter();
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("SELECT DATE_LIVRAISON,DATE_EMISSION,PRIXHT_C,TVA_C,PRIXTTC,REFERENCE_C,DATE_PAIEMENT,MONTANT,TYPE_DE_PAIEMENT.type,QUANTITE_ARTICLE,NOM_C,PRENOM_C,REFERENCE_A  FROM COMMANDE, PAIEMENT, TYPE_DE_PAIEMENT, ASSOCIATION_12, PASSER,projetbdd.client,ARTICLE WHERE commande.IDCOMMANDE = passer.IDCOMMANDE and passer.IDCLIENT = client.IDCLIENT union SELECT DATE_LIVRAISON,DATE_EMISSION,PRIXHT_C,TVA_C,PRIXTTC,REFERENCE_C,DATE_PAIEMENT,MONTANT,type_de_paiement.TYPE,QUANTITE_ARTICLE,NOM_C,PRENOM_C,REFERENCE_A  FROM COMMANDE, PAIEMENT, TYPE_DE_PAIEMENT, ASSOCIATION_12,PASSER,CLIENT,ARTICLE WHERE article.IDARTICLE = association_12.IDARTICLE union SELECT DATE_LIVRAISON,DATE_EMISSION,PRIXHT_C,TVA_C,PRIXTTC,REFERENCE_C,DATE_PAIEMENT,MONTANT,type_de_paiement.TYPE,QUANTITE_ARTICLE,NOM_C,PRENOM_C,REFERENCE_A  FROM COMMANDE, PAIEMENT, TYPE_DE_PAIEMENT, ASSOCIATION_12,CLIENT,PASSER,ARTICLE WHERE type_de_paiement.IDTYPE = paiement.IDTYPE",ConnectDB);
 			DataTable^ DT = gcnew DataTable();
 			Adapt->Fill(DT);
 			bindingSource1->DataSource = DT;
@@ -1680,24 +1803,27 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			strategy_ = gcnew GestionPersonnel(nomPersonnel->Text, prenomPersonnel->Text, annee_date_embauchePersonnel->Text, mois_date_embauchePersonnel->Text, jour_date_embauchePersonnel->Text, adresse_livraison);
 			this->strategy_->creer();
 		}
-		try {
-			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
-			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("SELECT RUE, VILLE,CODE_POSTAL,NOM_P,PRENOM_P,DATE_EMBAUCHE,IDPERSONNEL  FROM PERSONNEL, ADRESSE WHERE adresse.IDADRESSE = personnel.IDADRESSE", ConnectDB);
-			DataTable^ DT = gcnew DataTable();
-			Adapt->Fill(DT);
-			bindingSource1->DataSource = DT;
-			dataGridView1->DataSource = bindingSource1;
-		}
-		catch (exception e) {}
 		if (typeStrategy == "modifier") {
 			int ID = Convert::ToInt32(textBoxID->Text);
 			strategy_ = gcnew GestionPersonnel(nomPersonnel->Text, prenomPersonnel->Text, annee_date_embauchePersonnel->Text, mois_date_embauchePersonnel->Text, jour_date_embauchePersonnel->Text,ID, adresse_livraison);
 			this->strategy_->modifier();
 		}
 		if (typeStrategy == "supprimer") {
+			int ID = Convert::ToInt32(textBoxID->Text);
+			strategy_ = gcnew GestionPersonnel(nomPersonnel->Text, prenomPersonnel->Text, annee_date_embauchePersonnel->Text, mois_date_embauchePersonnel->Text, jour_date_embauchePersonnel->Text, ID, adresse_livraison);
+			this->strategy_->supprimer();
 		}
 		if (typeStrategy == "rechercher") {
+			try {
+				String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+				MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+				MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("SELECT * FROM client WHERE NOM_C LIKE NOM_C = " + nomClient + "",  ConnectDB);
+				DataTable^ DT = gcnew DataTable();
+				Adapt->Fill(DT);
+				bindingSource1->DataSource = DT;
+				dataGridView1->DataSource = bindingSource1;
+			}
+			catch (exception e) {}
 		}
 		try {
 			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
@@ -1712,15 +1838,12 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	if (typeGestion == "stock") {
 		if (typeStrategy == "creer") {
-			int prixHT = Convert::ToInt32(prixHTStock->Text);
-			double TVA = Convert::ToInt32(TVAStock->Text);
-			strategy_ = gcnew GestionStock(prixHT, referenceStock->Text, TVA,couleur->Text, comboBox1->Text);
+			strategy_ = gcnew GestionStock(prixHTStock->Text, referenceStock->Text, TVAStock->Text,couleur->Text, comboBox1->Text);
 			this->strategy_->creer();
 		}
 		if (typeStrategy == "modifier") {
-			int prixHT = Convert::ToInt32(prixHTStock->Text);
-			double TVA = Convert::ToInt32(TVAStock->Text);
-			strategy_ = gcnew GestionStock(prixHT, referenceStock->Text, TVA, couleur->Text, comboBox1->Text);
+			int ID = Convert::ToInt32(textBoxID->Text);
+			strategy_ = gcnew GestionStock(prixHTStock->Text, referenceStock->Text, TVAStock->Text, couleur->Text, comboBox1->Text,ID);
 			this->strategy_->modifier();
 		}
 		if (typeStrategy == "supprimer") {
@@ -1730,7 +1853,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		try {
 			String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 			MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from client", ConnectDB);
+			MySqlDataAdapter^ Adapt = gcnew MySqlDataAdapter("select * from article", ConnectDB);
 			DataTable^ DT = gcnew DataTable();
 			Adapt->Fill(DT);
 			bindingSource1->DataSource = DT;
@@ -1866,6 +1989,8 @@ private: System::Void rechercherpersonnelToolStripMenuItem3_Click(System::Object
 	this->labelID->Show();
 	typeGestion = "personnel";
 	typeStrategy = "rechercher";
+}
+private: System::Void label27_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

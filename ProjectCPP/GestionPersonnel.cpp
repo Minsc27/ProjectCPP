@@ -4,12 +4,14 @@
 GestionPersonnel::GestionPersonnel() : nom(), prenom(), annee(), mois(), jour()
 {
 	IDpersonnel++;
+	IDpersonnel1 = IDpersonnel;
 }
 
 GestionPersonnel::GestionPersonnel(String^ _nom, String^ _prenom, String^ _annee, String^ _mois, String^ _jour, adresse^ __adresse) : nom(_nom), prenom(_prenom), annee(_annee), mois(_mois), jour(_jour)
 {
 	_adresse = __adresse;
 	IDpersonnel++;
+	IDpersonnel1 = IDpersonnel;
 }
 
 GestionPersonnel::GestionPersonnel(String^ _nom, String^ _prenom, String^ _annee, String^ _mois, String^ _jour, int _IDpersonnel, adresse^ __adresse) : nom(_nom), prenom(_prenom), annee(_annee), mois(_mois), jour(_jour), IDpersonnel1(_IDpersonnel)
@@ -56,21 +58,6 @@ void GestionPersonnel::modifier(void)
 
 void GestionPersonnel::supprimer(void)
 {
-	/*try {
-		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
-		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
-
-		MySqlCommand^ Adapt1 = gcnew MySqlCommand("delete from personnel WHERE IDPERSONNEL = " + IDpersonnel1, ConnectDB);
-		MySqlDataReader^ DR;
-		ConnectDB->Open();
-		DR = Adapt1->ExecuteReader();
-		ConnectDB->Close();
-	}
-	catch (exception e) {}*/
-}
-
-void GestionPersonnel::afficher(void)
-{
 	try {
 		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
 		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
@@ -82,4 +69,19 @@ void GestionPersonnel::afficher(void)
 		ConnectDB->Close();
 	}
 	catch (exception e) {}
+}
+
+void GestionPersonnel::afficher(void)
+{
+	/*try {
+		String^ Constring = L"Server=127.0.0.1;user=root;password=Password123;Database=ProjetBDD";
+		MySqlConnection^ ConnectDB = gcnew MySqlConnection(Constring);
+
+		MySqlCommand^ Adapt1 = gcnew MySqlCommand("delete from personnel WHERE IDPERSONNEL = " + IDpersonnel1, ConnectDB);
+		MySqlDataReader^ DR;
+		ConnectDB->Open();
+		DR = Adapt1->ExecuteReader();
+		ConnectDB->Close();
+	}
+	catch (exception e) {}*/
 }

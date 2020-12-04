@@ -6,7 +6,6 @@ ref class adresse
 public:
 	adresse();
 	adresse(String^, int^, String^);
-	adresse(String^, int^, String^, String^, int^, String^);
 	String^ Getruelivraison() { return rue_livraison; }
 	String^ Getvillelivraison() { return ville_livraison; }
 	int^ Getcode_postallivraison() { return code_postal_livraison; }
